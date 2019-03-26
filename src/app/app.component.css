@@ -1,0 +1,22 @@
+
+span{
+  align-self: flex-end;
+}
+p{
+    color: white;
+    text-align:left;
+    vertical-align: text-bottom;
+
+
+  }
+  a{
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+}
+  a.visited{
+    color: #ffffff;
+}
+  a.hover{
+    color: #ffffff;
+}

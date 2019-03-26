@@ -1,0 +1,19 @@
+.table{
+  width:92%;
+  margin-left: 4%;
+  background-color: #FFFFFF;
+}
+table {
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.stat-left-container{
+  width:600px ;
+  margin-top: 1%;
+}
+.text{
+  text-align: center;
+}
