@@ -39,8 +39,8 @@ this.myDate = new Date() ;
 
   setInterval(() => {         //timer
     this.timer = new Date();
-    this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
-    this.timer.setHours(0);
+    this.timer.setTime(this.timer.getTime() - this.startDate.getTime() +82800000 );
+  //  this.timer.setHours(0);
   //  this.hh =  this.timer.getHours();
   //  this.mm =  this.timer.getMinutes();
   //  this.ss =  this.timer.getSeconds();
