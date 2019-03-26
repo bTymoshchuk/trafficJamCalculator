@@ -1,7 +1,7 @@
 <div class="mainComponent ">
 
 <div *ngIf="jamCondition ; else elseBlock" >
-  <h1 class="clock">{{myDate | date: 'hh:mm:ss'  }}</h1><br>   <!-- digital clock -->
+  <h1 class="clock">{{myDate | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
 <mat-form-field>
   <mat-select placeholder="Reason" >
     <mat-option>Bad weather</mat-option>
@@ -17,7 +17,7 @@
 </div>
 
 <ng-template #elseBlock>
-  <h1 class="clock">{{timer  | date: 'hh:mm:ss' }}</h1>   <!-- timer -->
+  <h1 class="clock">{{timer  | date: 'HH:mm:ss' }}</h1>   <!-- timer -->
   <br>
   <br>
   <br>
