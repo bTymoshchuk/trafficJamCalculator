@@ -1,29 +1,25 @@
 <div class="mainComponent ">
-
-<div *ngIf="jamCondition ; else elseBlock" >
-  <h1 class="clock">{{myDate | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
-<mat-form-field>
-  <mat-select placeholder="Reason" >
-    <mat-option>Bad weather</mat-option>
-    <mat-option>Huge traffic</mat-option>
-    <mat-option>Road accident</mat-option>
-  </mat-select>
-  </mat-form-field>
-<br>
-
-  <button mat-raised-button  (click)="start()" class="mainButton">Start</button>
-
-
-</div>
-
-<ng-template #elseBlock>
-  <h1 class="clock">{{timer  | date: 'HH:mm:ss' }}</h1>   <!-- timer -->
-  <br>
-  <br>
-  <br>
-  <button mat-raised-button (click)="stop()" class="mainButton" style="margin-top:17px">Stop</button>
-
-</ng-template>
+    <!-- Start button block-->
+  <div *ngIf="jamCondition ; else elseBlock" >
+      <h1 class="clock">{{myDate | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
+      <mat-form-field>
+        <mat-select placeholder="Reason" >
+          <mat-option>Bad weather</mat-option>
+          <mat-option>Huge traffic</mat-option>
+          <mat-option>Road accident</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <button mat-raised-button  (click)="start()" class="mainButton">Start</button>
+  </div>
+    <!-- Stop button block-->
+  <ng-template #elseBlock>
+    <h1 class="clock">{{timer  | date: 'HH:mm:ss' }}</h1>   <!-- timer -->
+    <br>
+    <br>
+    <br>
+    <button mat-raised-button (click)="stop()" class="mainButton" style="margin-top:17px">Stop</button>
+  </ng-template>
 
 </div>
 <!-- timer  | date: 'hh:mm:ss' -->

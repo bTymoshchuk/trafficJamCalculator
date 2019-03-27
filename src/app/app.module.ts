@@ -35,7 +35,7 @@ import {MatInputModule} from '@angular/material/input'
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatDialogModule} from "@angular/material";
 import { DialogComponent } from './components/dialog/dialog.component';
-
+import { GlobalService } from './global.service';
 
 
 
@@ -65,6 +65,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
+    MainComponent
 
 
   ],
@@ -102,8 +103,9 @@ import { DialogComponent } from './components/dialog/dialog.component';
     MatDialogModule,
 
 
+
   ],
-  providers: [],
+  providers: [ GlobalService],
   bootstrap: [AppComponent],
   entryComponents:[DialogComponent]
 })
