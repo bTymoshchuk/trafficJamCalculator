@@ -13,6 +13,7 @@ import { GlobalService } from 'src/app/global.service';
 export class MainComponent implements OnInit {
   myDate = new Date();
   startDate = new Date();
+  date1 = 0;
   timer = new Date();
   lastJamDuration = new Date();
   jamCondition  = true;
@@ -31,12 +32,15 @@ this.myDate = new Date() ;
 
   start(): void{              //start button
   this.startDate = new Date();
-  this.jamCondition = false;
+  this.timer = new Date();
+  this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
+
 
   setInterval(() => {         //timer
     this.timer = new Date();
     this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
 }, 1000);
+    this.jamCondition = false;
 }
 constructor(
    private globalService: GlobalService,
@@ -47,6 +51,9 @@ constructor(
   this.lastJamDuration = this.timer;
   this.globalService.setDuration(this.lastJamDuration.getTime());
   this.openDialog();
+}
+cancel(): void{            //cancel button
+  this.jamCondition = true;
 }
 
       //dialog
