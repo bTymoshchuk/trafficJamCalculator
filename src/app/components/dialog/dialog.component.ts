@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MainComponent } from 'src/app/components/main/main.component';
 import { Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { GlobalService } from 'src/app/global.service';
 
 
 @Component({
@@ -12,8 +13,15 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 export class DialogComponent implements OnInit {
 
 
+
+
+
   constructor(
-      public dialogRef: MatDialogRef<DialogComponent>) {}
+      public dialogRef: MatDialogRef<DialogComponent>,
+      private globalService: GlobalService
+  ) {}
+
+  duration = this.globalService.getDuration();
 
   closeDialog(): void {
       this.dialogRef.close();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import{Jam} from 'src/app/jam';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialog, MatDialogRef} from "@angular/material";
@@ -13,10 +13,10 @@ import { GlobalService } from 'src/app/global.service';
 export class MainComponent implements OnInit {
   myDate = new Date();
   startDate = new Date();
-  date1 = 0;
   timer = new Date();
   lastJamDuration = new Date();
   jamCondition  = true;
+
 
 
   ngOnInit() {
@@ -35,18 +35,21 @@ this.myDate = new Date() ;
 
   setInterval(() => {         //timer
     this.timer = new Date();
-    this.timer.setTime(this.timer.getTime() - this.startDate.getTime() + 82800000);
+    this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
 }, 1000);
 }
-
+constructor(
+   private globalService: GlobalService,
+   private dialog: MatDialog
+ ) { }
   stop(): void{             //stop button
   this.jamCondition = true;
-  this.date1 = 0;
   this.lastJamDuration = this.timer;
+  this.globalService.setDuration(this.lastJamDuration.getTime());
   this.openDialog();
 }
 
-constructor(private dialog: MatDialog) {}      //dialog
+      //dialog
 
   openDialog() {
 

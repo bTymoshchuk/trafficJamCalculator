@@ -65,7 +65,8 @@ import { GlobalService } from './global.service';
     MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
-    MainComponent
+    MainComponent,
+    DialogComponent
 
 
   ],

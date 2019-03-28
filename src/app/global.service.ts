@@ -5,6 +5,14 @@ import { MainComponent } from './components/main/main.component';
   providedIn: 'root'
 })
 export class GlobalService {
- //duration = MainComponent.lastJamDuration;
+ duration = 0;
+
+ setDuration(a: number){
+   this.duration = a;
+ }
+
+ getDuration(){
+   return this.duration;
+ }
   constructor() { }
 }
