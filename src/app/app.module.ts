@@ -36,6 +36,8 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatDialogModule} from "@angular/material";
 import { DialogComponent } from './components/dialog/dialog.component';
 import { GlobalService } from './global.service';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 
@@ -66,7 +68,9 @@ import { GlobalService } from './global.service';
     MatSortModule,
     MatDialogModule,
     MainComponent,
-    DialogComponent
+    DialogComponent,
+    MatProgressBarModule,
+    MatProgressSpinnerModule
 
 
   ],
@@ -102,6 +106,7 @@ import { GlobalService } from './global.service';
     MatPaginatorModule ,
     MatSortModule,
     MatDialogModule,
+    MatProgressSpinnerModule
 
 
 

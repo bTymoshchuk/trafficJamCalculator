@@ -2,6 +2,7 @@
   width:92%;
   margin-left: 4%;
   background-color: #FFFFFF;
+
 }
 table {
   width: 100%;
@@ -16,4 +17,18 @@ th.mat-sort-header-sorted {
 }
 .text{
   text-align: center;
+}
+.spinner{
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background-color: white;
+}
+.spinnertime{
+  position:relative; top: -98px; left: 17px;
+  color: gray;
+
+}
+.statistics{
+
 }
