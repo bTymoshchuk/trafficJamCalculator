@@ -6,7 +6,9 @@
  <mat-toolbar-row>
 
     <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="sidenav.toggle()" color="primary">
+
       <mat-icon aria-label="Side nav toggle icon" style='color:white;' >menu</mat-icon>
+
     </button>
 
     <span>trafficJamCalculator</span>
@@ -35,9 +37,8 @@
 
   <mat-sidenav-content role="main" >
 
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
   </mat-sidenav-content>
-
 
 <mat-sidenav-container>

@@ -50,7 +50,7 @@ export class JamsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  getValue(){                   //returns time till the next FB post
+  getValue(){                   //returns current working day time in %
     var j = 0;
     for (let i = 0; i < ELEMENT_DATA.length; i++) {
         j = j + ELEMENT_DATA[i].duration;
@@ -69,14 +69,14 @@ export class JamsComponent implements OnInit {
 
   progressSpinnerAnimation(){
       this.mode = 'indeterminate';
-      setInterval(this.toggleMode, 1000);
+      setTimeout(()=> this.toggleMode(), 2000);
     }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.value= this.getValue();
-   this.progressSpinnerAnimation();
+    this.value = this.getValue();
+    this.progressSpinnerAnimation();
   }
   onSelect(jam: Jams): void {
      this.selectedJam = jam;

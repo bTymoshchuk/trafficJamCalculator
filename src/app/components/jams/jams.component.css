@@ -12,11 +12,12 @@ th.mat-sort-header-sorted {
 }
 
 .stat-left-container{
-  width:520px ;
-  margin-top: 1%;
+  width:30% ;
+  margin: 1%;
 }
-.text{
-  text-align: center;
+.stat-right-container{
+  margin: 1%;
+  width: 30%;
 }
 .spinner{
   width: 160px;
@@ -29,6 +30,8 @@ th.mat-sort-header-sorted {
   color: gray;
 
 }
-.statistics{
-
+.stats{
+    display: inline-flex;
+    padding: 1%;
+    width: 100%;
 }

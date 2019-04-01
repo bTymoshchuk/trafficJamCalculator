@@ -56,9 +56,9 @@ cancel(): void{            //cancel button
   this.jamCondition = true;
 }
 
-      //dialog
 
-  openDialog() {
+
+  openDialog() {          //dialog
 
       const dialogRef = this.dialog.open(DialogComponent, {
         width: '250px'
