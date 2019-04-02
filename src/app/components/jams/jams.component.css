@@ -12,7 +12,7 @@ th.mat-sort-header-sorted {
 }
 
 .stat-left-container{
-  width:30% ;
+  width:32em;
   margin: 1%;
 }
 .stat-right-container{
@@ -34,4 +34,6 @@ th.mat-sort-header-sorted {
     display: inline-flex;
     padding: 1%;
     width: 100%;
+}
+.report{
 }

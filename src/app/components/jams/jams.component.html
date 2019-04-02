@@ -8,10 +8,10 @@
 
  <table mat-table [dataSource]="dataSource" matSort  >
 
-   <ng-container matColumnDef="id">
+   <!--<ng-container matColumnDef="id">
      <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
      <td mat-cell *matCellDef="let jam"> {{jam.id}}</td>
-   </ng-container>
+   </ng-container>-->
 
    <ng-container matColumnDef="begin">
      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
@@ -35,9 +35,15 @@
 </table>
 
 
-    <mat-paginator class="paginator" [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons>  </mat-paginator>
 
-    <app-report></app-report>
+    <div class="report">
+
+        <app-report></app-report>
+
+      </div>
+
+
     </div>
 
   </div>

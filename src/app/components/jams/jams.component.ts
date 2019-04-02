@@ -41,7 +41,7 @@ export class JamsComponent implements OnInit {
   selectedJam: Jams;
   mode = 'determinate';
 
-  displayedColumns: string[] = ['id', 'begin','reason',  'duration'];
+  displayedColumns: string[] = ['begin','reason',  'duration']; //'id', 
   dataSource  = new MatTableDataSource<Jams>(ELEMENT_DATA);
 
 
@@ -69,7 +69,7 @@ export class JamsComponent implements OnInit {
 
   progressSpinnerAnimation(){
       this.mode = 'indeterminate';
-      setTimeout(()=> this.toggleMode(), 2000);
+      setTimeout(()=> this.toggleMode(), 1200);
     }
 
   ngOnInit() {
