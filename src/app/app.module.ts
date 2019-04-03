@@ -17,7 +17,6 @@ import {
   MatBottomSheetModule,
   MatButtonModule,
   MatButtonToggleModule,
-  MatCardModule,
   MatCheckboxModule,
   MatFormFieldModule,
   MatPaginatorModule ,
@@ -38,6 +37,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { GlobalService } from './global.service';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -52,7 +52,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
-    MatCardModule,
+
     MatCheckboxModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -70,7 +70,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MainComponent,
     DialogComponent,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
 
 
   ],
@@ -106,7 +107,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatPaginatorModule ,
     MatSortModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatCardModule,
 
 
 

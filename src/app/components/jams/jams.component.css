@@ -1,6 +1,5 @@
 .table{
-  width:92%;
-  margin-left: 4%;
+  width:100%;
   background-color: #FFFFFF;
 
 }
@@ -12,12 +11,10 @@ th.mat-sort-header-sorted {
 }
 
 .stat-left-container{
-  width:32em;
-  margin: 1%;
+  height: 100%;
 }
 .stat-right-container{
-  margin: 1%;
-  width: 30%;
+  height: 100%;
 }
 .spinner{
   width: 160px;
@@ -27,13 +24,17 @@ th.mat-sort-header-sorted {
 }
 .spinnertime{
   position:relative; top: -98px; left: 17px;
-  color: gray;
-
+  color: black;
 }
 .stats{
-    display: inline-flex;
     padding: 1%;
     width: 100%;
 }
 .report{
 }
+/*.stat-left-container{
+  background: cyan;
+}
+.stat-right-container{
+  background: blue;
+}*/

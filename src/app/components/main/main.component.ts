@@ -34,12 +34,10 @@ this.myDate = new Date() ;
   this.startDate = new Date();
   this.timer = new Date();
   this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
-
-
   setInterval(() => {         //timer
     this.timer = new Date();
     this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
-}, 1000);
+    }, 1000);
     this.jamCondition = false;
 }
 constructor(

@@ -1,17 +1,26 @@
 <div class="mainComponent ">
+
     <!-- Start button block-->
   <div *ngIf="jamCondition ; else elseBlock" >
+
       <h1 class="clock">{{myDate | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
+
       <mat-form-field>
+
         <mat-select placeholder="Reason" [(value)]="selected" >
           <mat-option value="option1">Bad weather</mat-option>
           <mat-option value="option2">Huge traffic</mat-option>
           <mat-option value="option3">Road accident</mat-option>
         </mat-select>
+
       </mat-form-field>
+
       <br>
+
       <button mat-raised-button  (click)="start()" class="mainButton">Start</button>
+
   </div>
+
     <!-- Stop button block-->
   <ng-template #elseBlock>
 
@@ -22,7 +31,7 @@
     <button mat-raised-button (click)="stop()" class="mainButton" style="margin-top:17px ">Stop</button>
     <br>
     <button mat-button (click)="cancel()" style=" color: gray;  ">Cancel</button>
+
   </ng-template>
 
 </div>
-<!-- timer  | date: 'hh:mm:ss' -->
