@@ -12,6 +12,7 @@ th.mat-sort-header-sorted {
 
 .stat-left-container{
   height: 100%;
+  margin-bottom: 0.5em;
 }
 .stat-right-container{
   height: 100%;
@@ -21,17 +22,40 @@ th.mat-sort-header-sorted {
   height: 160px;
   border-radius: 80px;
   background-color: white;
+  margin: 0 auto;
 }
 .spinnertime{
-  position:relative; top: -98px; left: 17px;
+  position:relative;
+  top: -98px; left: 17px;
   color: black;
 }
 .stats{
-    padding: 1%;
+    padding: 1em;
     width: 100%;
 }
 .report{
 }
+.spinnercard{
+  height: auto;
+}
+.expandedDetail  td{
+  border-bottom-width: 0;
+}
+.expandedContent{
+  overflow: hidden;
+  display: flex;
+}
+tr.jamRow:not(.selected):hover {
+  background: #f5f5f5;
+}
+
+tr.jamRow:not(.selected):active {
+  background: #efefef;
+}
+.expandedDetail{
+  height: 0;
+}
+
 /*.stat-left-container{
   background: cyan;
 }

@@ -100,7 +100,6 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    BrowserAnimationsModule,
     MatInputModule,
     CdkTableModule,
     MatTableModule,
@@ -115,6 +114,6 @@ import {MatCardModule} from '@angular/material/card';
   ],
   providers: [ GlobalService],
   bootstrap: [AppComponent],
-  entryComponents:[DialogComponent]
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }

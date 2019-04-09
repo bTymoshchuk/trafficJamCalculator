@@ -7,7 +7,7 @@ import { MatTableDataSource ,
                      } from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
 export interface Jams {
@@ -17,7 +17,7 @@ export interface Jams {
   duration: number;
 }
 
-const ELEMENT_DATA: Jams[] = [
+var JAMS_DATA: Jams[] = [
   {id: 1, reason:'car accident', begin: 1550473513000, duration: 5351822},
   {id: 2, reason:'bad weather', begin: 1550559757000, duration: 4906187+ 1200000 },
   {id: 3, reason:'traffic', begin: 1550646386000, duration: 3501824 + 1200000},
@@ -34,15 +34,22 @@ const ELEMENT_DATA: Jams[] = [
 @Component({
   selector: 'app-jams',
   templateUrl: './jams.component.html',
-  styleUrls: ['./jams.component.css']
+  styleUrls: ['./jams.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0', display: 'none'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class JamsComponent implements OnInit {
   value = 0;
-  selectedJam: Jams;
+  selectedJam: Jams | null;
   mode = 'determinate';
-
-  displayedColumns: string[] = ['begin','reason',  'duration']; //'id', 
-  dataSource  = new MatTableDataSource<Jams>(ELEMENT_DATA);
+  jamSelected = false;
+  displayedColumns: string[] = ['begin','reason',  'duration']; //'id',
+  dataSource  = new MatTableDataSource<Jams>(JAMS_DATA);
 
 
   constructor( ) { }
@@ -52,11 +59,11 @@ export class JamsComponent implements OnInit {
 
   getValue(){                   //returns current working day time in %
     var j = 0;
-    for (let i = 0; i < ELEMENT_DATA.length; i++) {
-        j = j + ELEMENT_DATA[i].duration;
+    for (let i = 0; i < JAMS_DATA.length; i++) {
+        j = j + JAMS_DATA[i].duration;
     }
-        j = j%28800000;
-        return j/28000000*100;
+    j = j%28800000;
+    return j/28000000*100;
   }
 
   toggleMode(){
@@ -75,10 +82,17 @@ export class JamsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.value = this.getValue();
+    setInterval(()=>this.value = this.getValue(),1000);
     this.progressSpinnerAnimation();
   }
   onSelect(jam: Jams): void {
-     this.selectedJam = jam;
+    if(this.selectedJam === jam){
+      this.selectedJam = null;
+      this.jamSelected = false;
+    }
+    else{
+      this.selectedJam = jam;
+      this.jamSelected = true;
+    }
    }
 }
