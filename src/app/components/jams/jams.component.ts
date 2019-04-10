@@ -50,6 +50,7 @@ export class JamsComponent implements OnInit {
   jamSelected = false;
   displayedColumns: string[] = ['begin','reason',  'duration']; //'id',
   dataSource  = new MatTableDataSource<Jams>(JAMS_DATA);
+  currentDayTime = 0;
 
 
   constructor( ) { }
@@ -57,13 +58,16 @@ export class JamsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  getValue(){                   //returns current working day time in %
+  getCurrentDayTime(){          //returns current working day time
     var j = 0;
     for (let i = 0; i < JAMS_DATA.length; i++) {
         j = j + JAMS_DATA[i].duration;
     }
-    j = j%28800000;
-    return j/28000000*100;
+    return j%28000000;
+  }
+
+  getValue(){                   //returns current working day time in %
+    return this.currentDayTime/28000000*100;
   }
 
   toggleMode(){
@@ -82,7 +86,11 @@ export class JamsComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    setInterval(()=>this.value = this.getValue(),1000);
+    setInterval(()=>{
+      this.currentDayTime = this.getCurrentDayTime();
+      this.value = this.getValue();
+      }
+      ,1000);
     this.progressSpinnerAnimation();
   }
   onSelect(jam: Jams): void {
