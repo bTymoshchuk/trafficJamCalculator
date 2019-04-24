@@ -30,7 +30,7 @@ th.mat-sort-header-sorted {
   color: black;
 }
 .stats{
-    padding: 1em;
+    padding: 0.5%;
     width: 100%;
 }
 .report{
@@ -54,6 +54,9 @@ tr.jamRow:not(.selected):active {
 }
 .expandedDetail{
   height: 0;
+}
+.deleteButton{
+  align-self: flex-end;
 }
 
 /*.stat-left-container{

@@ -8,27 +8,13 @@ import { MatTableDataSource ,
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {MatIconModule} from '@angular/material/icon';
+import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
+import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
 
 
-export interface Jams {
-  id: number;
-  reason: string;
-  begin: number;
-  duration: number;
-}
 
-var JAMS_DATA: Jams[] = [
-  {id: 1, reason:'car accident', begin: 1550473513000, duration: 5351822},
-  {id: 2, reason:'bad weather', begin: 1550559757000, duration: 4906187+ 1200000 },
-  {id: 3, reason:'traffic', begin: 1550646386000, duration: 3501824 + 1200000},
-  {id: 4, reason:'snow', begin:  82800000, duration: 3860559+ 1200000 },
-  {id: 5, reason:'unknown', begin:  82800000, duration: 515875 +1200000 },
-  {id: 6, reason:'car accident', begin:  82800000, duration: 2827687+ 1200000 },
-  {id: 7, reason:'car accident', begin:  82800000, duration: 909499 + 1200000},
-  {id: 8, reason:'car accident', begin:  82800000, duration: 5316323+ 1200000 },
-  {id: 9, reason:'car accident', begin:  82800000, duration: 2335425 + 1200000},
-  {id: 10, reason:'car accident', begin:  82800000, duration:5062742+ 1200000},
-]
+
 
 
 @Component({
@@ -44,12 +30,13 @@ var JAMS_DATA: Jams[] = [
   ],
 })
 export class JamsComponent implements OnInit {
+  JAMS_DATA = JAMS;
   value = 0;
-  selectedJam: Jams | null;
+  selectedJam: Jam | null;
   mode = 'determinate';
   jamSelected = false;
-  displayedColumns: string[] = ['begin','reason',  'duration']; //'id',
-  dataSource  = new MatTableDataSource<Jams>(JAMS_DATA);
+  displayedColumns: string[] = ['begin','reason',  'duration'];
+  dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
   currentDayTime = 0;
 
 
@@ -57,13 +44,19 @@ export class JamsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  getTotalDuration(){          //returns total duration of all jams in milliseconds
+    var j = 0;
+    for (let i = 0; i < this.JAMS_DATA.length; i++) {
+        j = j + this.JAMS_DATA[i].duration;
+    }
+    return j;
+  }
+  getAverageDuration(){
+    return this.getTotalDuration()/this.JAMS_DATA.length;
+  }
 
   getCurrentDayTime(){          //returns current working day time
-    var j = 0;
-    for (let i = 0; i < JAMS_DATA.length; i++) {
-        j = j + JAMS_DATA[i].duration;
-    }
-    return j%28000000;
+  return this.getTotalDuration()%28000000;
   }
 
   getValue(){                   //returns current working day time in %
@@ -87,13 +80,14 @@ export class JamsComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     setInterval(()=>{
+
       this.currentDayTime = this.getCurrentDayTime();
       this.value = this.getValue();
       }
       ,1000);
     this.progressSpinnerAnimation();
   }
-  onSelect(jam: Jams): void {
+  onSelect(jam: Jam): void {
     if(this.selectedJam === jam){
       this.selectedJam = null;
       this.jamSelected = false;
