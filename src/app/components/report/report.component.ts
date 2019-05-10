@@ -17,17 +17,17 @@ export class ReportComponent implements OnInit {
   ngOnInit() {
   }
 
-  downloadPDF(){
+  downloadPDF(){                                              //jsPDF report
     let head = [["Begin", "Duration", "Reason"]];
     let body = [];
     for (let i = 0; i < JAMS.length; i++) {
-      body.push([  this.datePipe.transform(JAMS[i].begin , 'yyyy-dd-MM HH:mm:ss') , this.datePipe.transform(JAMS[i].duration , 'HH:mm:ss' , '+0000')  ,JAMS[i].reason]) ;
+      body.push([  this.datePipe.transform(JAMS[i].begin , 'yyyy-dd-MM HH:mm:ss') ,
+                this.datePipe.transform(JAMS[i].duration , 'HH:mm:ss' , '+0000')
+                ,JAMS[i].reason]) ;
     }
-
-
-let doc = new jsPDF();
-doc.autoTable({head, body}); // typescript compile time error
-doc.save('table.pdf');
+    let doc = new jsPDF();
+    doc.autoTable({head, body});
+    doc.save('table.pdf');
   }
 
 }

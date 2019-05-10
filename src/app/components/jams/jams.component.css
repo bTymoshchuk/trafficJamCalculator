@@ -30,7 +30,7 @@ th.mat-sort-header-sorted {
   color: black;
 }
 .stats{
-    padding: 0.5%;
+    padding: 1%;
     width: 100%;
 }
 .report{
@@ -48,20 +48,26 @@ th.mat-sort-header-sorted {
 tr.jamRow:not(.selected):hover {
   background: #f5f5f5;
 }
-
 tr.jamRow:not(.selected):active {
   background: #efefef;
 }
+
 .expandedDetail{
   height: 0;
 }
 .deleteButton{
   align-self: flex-end;
 }
-
-/*.stat-left-container{
-  background: cyan;
+.dayscard{
+  height: 100%;
 }
-.stat-right-container{
-  background: blue;
-}*/
+DIV.days{
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+P.daysAmount{
+      font-size: 70px;
+      width: auto;
+}

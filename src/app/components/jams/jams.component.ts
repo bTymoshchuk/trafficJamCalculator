@@ -38,6 +38,8 @@ export class JamsComponent implements OnInit {
   displayedColumns: string[] = ['begin','reason',  'duration'];
   dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
   currentDayTime = 0;
+  workingDays = 0;
+  averageDuration = 0;
 
 
   constructor( ) { }
@@ -50,8 +52,9 @@ export class JamsComponent implements OnInit {
         j = j + this.JAMS_DATA[i].duration;
     }
     return j;
+
   }
-  getAverageDuration(){
+  getAverageDuration(){        //returns average duration
     return this.getTotalDuration()/this.JAMS_DATA.length;
   }
 
@@ -59,7 +62,7 @@ export class JamsComponent implements OnInit {
   return this.getTotalDuration()%28000000;
   }
 
-  getValue(){                   //returns current working day time in %
+  getSpinnerValue(){                   //returns % of current working day spent in jams
     return this.currentDayTime/28000000*100;
   }
 
@@ -71,21 +74,25 @@ export class JamsComponent implements OnInit {
     }
   }
 
-  progressSpinnerAnimation(){
-      this.mode = 'indeterminate';
-      setTimeout(()=> this.toggleMode(), 1200);
-    }
+  getWorkingDays(){           //returns amount of working days spent in jams
+    return (this.getTotalDuration()/28800000>>0);
+  }
+
+
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.currentDayTime = this.getCurrentDayTime();
+    this.workingDays = this.getWorkingDays();
+    this.averageDuration = this.getAverageDuration();
     setInterval(()=>{
 
       this.currentDayTime = this.getCurrentDayTime();
-      this.value = this.getValue();
+      this.value = this.getSpinnerValue();
       }
       ,1000);
-    this.progressSpinnerAnimation();
+
   }
   onSelect(jam: Jam): void {
     if(this.selectedJam === jam){
