@@ -1,0 +1,13 @@
+.dayscard{
+  height: 100%;
+}
+DIV.days{
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+P.daysAmount{
+      font-size: 70px;
+      width: auto;
+}

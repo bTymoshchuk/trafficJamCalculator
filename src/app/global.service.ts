@@ -8,7 +8,7 @@ export class GlobalService {
  duration = 0;
  start = 0;
  reason = "";
- jamStatus = true;
+ jamStatus = false ;
 
  setDuration(a: number){
    this.duration = a;

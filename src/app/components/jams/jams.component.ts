@@ -3,14 +3,14 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSortModule} from '@angular/material/sort';
 import { MatTableDataSource ,
          MatPaginator,
-         MatSort
-                     } from '@angular/material';
+         MatSort} from '@angular/material';
 import {MatTableModule} from '@angular/material/table';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
 import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
+
 
 
 
@@ -62,38 +62,15 @@ export class JamsComponent implements OnInit {
   return this.getTotalDuration()%28000000;
   }
 
-  getSpinnerValue(){                   //returns % of current working day spent in jams
-    return this.currentDayTime/28000000*100;
-  }
-
-  toggleMode(){
-    if (this.mode == 'indeterminate') {
-        this.mode = 'determinate';
-    } else{
-      this.mode = 'indeterminate';
-    }
-  }
-
-  getWorkingDays(){           //returns amount of working days spent in jams
+  getWorkingDays(){           //returns an amount of working days spent in jams
     return (this.getTotalDuration()/28800000>>0);
   }
-
-
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    this.currentDayTime = this.getCurrentDayTime();
-    this.workingDays = this.getWorkingDays();
-    this.averageDuration = this.getAverageDuration();
-    setInterval(()=>{
-
-      this.currentDayTime = this.getCurrentDayTime();
-      this.value = this.getSpinnerValue();
-      }
-      ,1000);
-
   }
+                           //selects a jam in the table
   onSelect(jam: Jam): void {
     if(this.selectedJam === jam){
       this.selectedJam = null;

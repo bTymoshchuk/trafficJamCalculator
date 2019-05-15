@@ -1,0 +1,19 @@
+<mat-card class="spinnercard">
+  <h4>Current day:</h4>
+
+  <div class="spinner mat-elevation-z2">
+
+    <mat-progress-spinner
+    color="primary"
+    [value]="value"
+    diameter="160"
+    [mode]="mode">
+    </mat-progress-spinner>
+
+    <div class="spinnertime ">
+      <h2>  {{ currentDayTime| date:'HH:mm:ss' : '+0000' }}  </h2>
+    </div>
+
+  </div>
+
+</mat-card>

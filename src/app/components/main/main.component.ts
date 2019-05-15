@@ -33,6 +33,7 @@ this.myDate = new Date() ;
   start(): void{              //start button
   this.startDate = new Date();
   this.timer = new Date();
+  this.globalService.setStatus(true);
   this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
   setInterval(() => {         //timer
     this.timer = new Date();
@@ -48,10 +49,12 @@ constructor(
   this.jamCondition = true;
   this.lastJamDuration = this.timer;
   this.globalService.setDuration(this.lastJamDuration.getTime());
+  this.globalService.setStatus(false);
   this.openDialog();
 }
 cancel(): void{            //cancel button
   this.jamCondition = true;
+  this.globalService.setStatus(false);
 }
 
 

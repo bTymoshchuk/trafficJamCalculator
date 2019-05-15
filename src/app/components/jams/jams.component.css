@@ -10,34 +10,10 @@ th.mat-sort-header-sorted {
   color: black;
 }
 
-.stat-left-container{
-  height: 100%;
-  margin-bottom: 0.5em;
-}
-.stat-right-container{
-  height: 100%;
-}
-.spinner{
-  width: 160px;
-  height: 160px;
-  border-radius: 80px;
-  background-color: white;
-  margin: 0 auto;
-}
-.spinnertime{
-  position:relative;
-  top: -98px; left: 17px;
-  color: black;
-}
-.stats{
-    padding: 1%;
-    width: 100%;
-}
+
 .report{
 }
-.spinnercard{
-  height: auto;
-}
+
 .expandedDetail  td{
   border-bottom-width: 0;
 }
@@ -57,17 +33,4 @@ tr.jamRow:not(.selected):active {
 }
 .deleteButton{
   align-self: flex-end;
-}
-.dayscard{
-  height: 100%;
-}
-DIV.days{
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center
-}
-P.daysAmount{
-      font-size: 70px;
-      width: auto;
 }

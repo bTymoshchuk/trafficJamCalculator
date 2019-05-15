@@ -1,0 +1,15 @@
+.stat-left-container{
+  height: 100%;
+  margin-bottom: 0.5em;
+}
+.stat-right-container{
+  height: 100%;
+}
+
+.stats{
+    padding: 1%;
+    width: 100%;
+}
+.col{
+  padding-bottom: 4%;
+}

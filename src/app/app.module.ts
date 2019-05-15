@@ -38,6 +38,10 @@ import { GlobalService } from './global.service';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
+import { ChartsModule } from 'ng2-charts';
+import { Chart1Component } from './components/chart1/chart1.component';
+import { DaySpinnerComponent } from './components/day-spinner/day-spinner.component';
+import { StatscardComponent } from './components/statscard/statscard.component';
 
 
 
@@ -74,6 +78,7 @@ import {MatCardModule} from '@angular/material/card';
 
 
 
+
   ],
   declarations: [
     AppComponent,
@@ -84,6 +89,10 @@ import {MatCardModule} from '@angular/material/card';
     ReportComponent,
     NavigationComponent,
     DialogComponent,
+    Chart1Component,
+    DaySpinnerComponent,
+    StatscardComponent,
+
 
   ],
   imports: [
@@ -108,6 +117,7 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatCardModule,
+    ChartsModule
 
 
 

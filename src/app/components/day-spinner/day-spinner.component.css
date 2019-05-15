@@ -1,0 +1,15 @@
+.spinner{
+  width: 160px;
+  height: 160px;
+  border-radius: 80px;
+  background-color: white;
+  margin: 0 auto;
+}
+.spinnertime{
+  position:relative;
+  top: -98px; left: 17px;
+  color: black;
+}
+.spinnercard{
+  height: auto;
+}
