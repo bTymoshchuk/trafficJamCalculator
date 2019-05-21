@@ -11,18 +11,19 @@ import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/tr
 })
 
 export class Chart1Component implements OnInit {
-  public barChartOptions = {                                          //chart js variables
+  public ChartOptions = {                                          //chart js variables
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels = [];
-  public barChartType = 'doughnut';
-  public barChartLegend = true;
-  public barChartData = [
+  public ChartLabels = [];
+  public ChartType = 'doughnut';
+  public ChartLegend = true;
+  public ChartColors = []
+  public ChartData = [
     {data: [], backgroundColor: ["#2D3A85", "#213DDB", "#3E51A8", "#7A85B7" ]}, // TODO:
   ];
 
-  decreasingBubbleSort( a: number[] , b:number[] ){
+  decreasingBubbleSort( a: number[] , b:string[] ){
     let n: number;
     let s: string;
     for (let i = 0; i < a.length -  1; i++) {
@@ -38,17 +39,17 @@ export class Chart1Component implements OnInit {
         }
     }
 }
-  getReasons(){                         //fulls barChartLabels and barChartData[0].data and bubblesorts them
+  getReasons(){                         //fulls ChartLabels and  ChartData[0].data and bubblesorts them
     if(JAMS.length>0){
       for (let i = 0; i < JAMS.length; i++) {
-          if(this.barChartLabels.includes(JAMS[i].reason)){
-            this.barChartData[0].data[this.barChartLabels.indexOf(JAMS[i].reason)]++;
+          if(this.ChartLabels.includes(JAMS[i].reason)){
+            this.ChartData[0].data[this.ChartLabels.indexOf(JAMS[i].reason)]++;
           }else{
-            this.barChartLabels.push(JAMS[i].reason);
-            this.barChartData[0].data.push(1);
+            this.ChartLabels.push(JAMS[i].reason);
+            this.ChartData[0].data.push(1);
           }
         }
-        this.decreasingBubbleSort(this.barChartData[0].data,   this.barChartLabels);
+        this.decreasingBubbleSort(this.ChartData[0].data,   this.ChartLabels);
       }
     }
 
