@@ -30,16 +30,8 @@ export class DaySpinnerComponent implements OnInit {
   return this.getTotalDuration()%28000000;
   }
 
-  getSpinnerValue(){             //returns % of current working day spent in jams
+  getSpinnerValue(){             //returns spinner value(% of current working day spent in jams)
     return this.currentDayTime/28000000*100;
-  }
-
-  toggleMode(){                 //toggles spinner mode
-    if (this.mode == 'indeterminate') {
-        this.mode = 'determinate';
-    } else{
-      this.mode = 'indeterminate';
-    }
   }
 
   constructor() { }
@@ -51,7 +43,7 @@ export class DaySpinnerComponent implements OnInit {
       this.currentDayTime = this.getCurrentDayTime();
       this.value = this.getSpinnerValue();
       }
-      ,1000);
+      ,200);
   }
 
 }

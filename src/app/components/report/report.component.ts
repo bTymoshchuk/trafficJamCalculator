@@ -26,7 +26,7 @@ export class ReportComponent implements OnInit {
                 ,JAMS[i].reason]) ;
     }
     let doc = new jsPDF();
-    doc.autoTable({head, body});
+    doc.autoTable({head, body, theme:'plain'},);
     doc.save('table.pdf');
   }
 

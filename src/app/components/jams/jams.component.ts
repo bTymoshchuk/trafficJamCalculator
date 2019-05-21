@@ -30,17 +30,11 @@ import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/tr
   ],
 })
 export class JamsComponent implements OnInit {
-  JAMS_DATA = JAMS;
-  value = 0;
-  selectedJam: Jam | null;
-  mode = 'determinate';
+  JAMS_DATA = JAMS;                                               //array of jams
+  selectedJam: Jam | null;                                        //
   jamSelected = false;
   displayedColumns: string[] = ['begin','reason',  'duration'];
   dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
-  currentDayTime = 0;
-  workingDays = 0;
-  averageDuration = 0;
-
 
   constructor( ) { }
 
@@ -66,10 +60,6 @@ export class JamsComponent implements OnInit {
     return (this.getTotalDuration()/28800000>>0);
   }
 
-  ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
                            //selects a jam in the table
   onSelect(jam: Jam): void {
     if(this.selectedJam === jam){
@@ -80,5 +70,10 @@ export class JamsComponent implements OnInit {
       this.selectedJam = jam;
       this.jamSelected = true;
     }
-   }
+  }
+
+  ngOnInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 }

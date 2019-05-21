@@ -1,3 +1,4 @@
+<!--This component represents the list of Jams-->
 <mat-card>
 
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows  matSort>
@@ -38,25 +39,25 @@
       <div class="expandedContent  "
       [@detailExpand]="jam == selectedJam ? 'expanded' : 'collapsed'">
 
-      <div *ngIf="jamSelected" >
+        <div *ngIf="jamSelected" >
 
-        <mat-form-field>
+          <mat-form-field>
 
-          <input matInput [(ngModel)]="selectedJam.duration" >
-          <button mat-raised-button type="button" name="button">Submit</button>
+            <input matInput [(ngModel)]="selectedJam.duration" >
+            <button mat-raised-button type="button" name="button">Submit</button>
 
-        </mat-form-field>
+          </mat-form-field>
 
-        <button class="deleteButton"mat-flat-button type="button" name="button">
-          <mat-icon style='color:black;' >delete_forever</mat-icon>
-        </button>
+          <button class="deleteButton"mat-flat-button type="button" name="button">
+            <mat-icon style='color:black;' >delete_forever</mat-icon>
+          </button>
+
+        </div>
 
       </div>
 
-    </div>
-
-  </td>
-
+    </td>
+    
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
