@@ -20,7 +20,7 @@ export class Chart1Component implements OnInit {
   public ChartLegend = true;
   public ChartColors = []
   public ChartData = [
-    {data: [], backgroundColor: ["#2D3A85", "#213DDB", "#3E51A8", "#7A85B7" ]}, // TODO:
+    {data: [], backgroundColor: [ "#2D3A85", "#213DDB", "#3E51A8", "#7A85B7" ]}, // TODO:
   ];
 
   decreasingBubbleSort( a: number[] , b:string[] ){

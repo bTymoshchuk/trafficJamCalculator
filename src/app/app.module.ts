@@ -42,6 +42,10 @@ import { ChartsModule } from 'ng2-charts';
 import { Chart1Component } from './components/chart1/chart1.component';
 import { DaySpinnerComponent } from './components/day-spinner/day-spinner.component';
 import { StatscardComponent } from './components/statscard/statscard.component';
+import { AddjamComponent } from './components/addjam/addjam.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/';
+import { Chart2Component } from './components/chart2/chart2.component';
 
 
 
@@ -92,6 +96,8 @@ import { StatscardComponent } from './components/statscard/statscard.component';
     Chart1Component,
     DaySpinnerComponent,
     StatscardComponent,
+    AddjamComponent,
+    Chart2Component,
 
 
   ],
@@ -117,13 +123,15 @@ import { StatscardComponent } from './components/statscard/statscard.component';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    ChartsModule
+    ChartsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
 
 
   ],
-  providers: [ GlobalService],
+  providers: [ GlobalService, MatDatepickerModule ],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent, AddjamComponent]
 })
 export class AppModule { }

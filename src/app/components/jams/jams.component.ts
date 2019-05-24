@@ -10,6 +10,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {MatIconModule} from '@angular/material/icon';
 import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
 import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
+import {MatDialog, MatDialogRef} from "@angular/material";
+import { AddjamComponent } from 'src/app/components/addjam/addjam.component';
 
 
 
@@ -36,7 +38,9 @@ export class JamsComponent implements OnInit {
   displayedColumns: string[] = ['begin','reason',  'duration'];
   dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
 
-  constructor( ) { }
+  constructor(
+      private addjam: MatDialog,
+  ) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -60,8 +64,8 @@ export class JamsComponent implements OnInit {
     return (this.getTotalDuration()/28800000>>0);
   }
 
-                           //selects a jam in the table
-  onSelect(jam: Jam): void {
+
+  onSelect(jam: Jam): void { //selects a jam in the table
     if(this.selectedJam === jam){
       this.selectedJam = null;
       this.jamSelected = false;
@@ -70,6 +74,13 @@ export class JamsComponent implements OnInit {
       this.selectedJam = jam;
       this.jamSelected = true;
     }
+  }
+
+  openAddjamWindow() {          //dialog
+
+      const dialogRef = this.addjam.open(AddjamComponent, {
+        width: '250px'
+      });
   }
 
   ngOnInit() {

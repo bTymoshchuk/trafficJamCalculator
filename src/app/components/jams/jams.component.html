@@ -49,7 +49,7 @@
           </mat-form-field>
 
           <button class="deleteButton"mat-flat-button type="button" name="button">
-            <mat-icon style='color:black;' >delete_forever</mat-icon>
+            <mat-icon style='color:black;' >delete</mat-icon>
           </button>
 
         </div>
@@ -57,7 +57,7 @@
       </div>
 
     </td>
-    
+
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -72,9 +72,10 @@
 
   </table>
 
-  <mat-paginator class="paginator" pageSize="10"></mat-paginator>
+  <mat-paginator class="paginator" pageSize="15" ></mat-paginator>
 
   <div class="report">
+    <button mat-flat-button type="button" name="button" (click)="openAddjamWindow()"  style="color: grey;">+ New jam</button>
     <app-report></app-report>
   </div>
 

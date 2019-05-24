@@ -1,0 +1,213 @@
+<div class="dialog">
+  <mat-form-field>
+    <mat-select placeholder="Reason">
+      <mat-option value="option1">Weather</mat-option>
+      <mat-option value="option2">Traffic overload</mat-option>
+      <mat-option value="option3">Road accident</mat-option>
+      <mat-option value="option4">Obstacles</mat-option>
+      <mat-option value="option5">Unknown</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput [max]="maxDate" [matDatepicker]="myDatepicker" placeholder="Choose start date">
+    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+    <mat-datepicker #myDatepicker></mat-datepicker>
+  </mat-form-field>
+
+  <p>Start time:
+  <mat-form-field style="width: 55px">
+    <mat-select placeholder="Hrs">
+      <mat-option value="00">00</mat-option>
+      <mat-option value="01">01</mat-option>
+      <mat-option value="02">02</mat-option>
+      <mat-option value="03">03</mat-option>
+      <mat-option value="04">04</mat-option>
+      <mat-option value="05">05</mat-option>
+      <mat-option value="06">06</mat-option>
+      <mat-option value="07">07</mat-option>
+      <mat-option value="08">08</mat-option>
+      <mat-option value="09">09</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="11">11</mat-option>
+      <mat-option value="12">12</mat-option>
+      <mat-option value="13">13</mat-option>
+      <mat-option value="14">14</mat-option>
+      <mat-option value="15">15</mat-option>
+      <mat-option value="16">16</mat-option>
+      <mat-option value="17">17</mat-option>
+      <mat-option value="18">18</mat-option>
+      <mat-option value="19">19</mat-option>
+      <mat-option value="20">20</mat-option>
+      <mat-option value="21">21</mat-option>
+      <mat-option value="22">22</mat-option>
+      <mat-option value="23">23</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field style="width: 55px">
+    <mat-select placeholder="Mins">
+      <mat-option value="00">00</mat-option>
+      <mat-option value="01">01</mat-option>
+      <mat-option value="02">02</mat-option>
+      <mat-option value="03">03</mat-option>
+      <mat-option value="04">04</mat-option>
+      <mat-option value="05">05</mat-option>
+      <mat-option value="06">06</mat-option>
+      <mat-option value="07">07</mat-option>
+      <mat-option value="08">08</mat-option>
+      <mat-option value="09">09</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="11">11</mat-option>
+      <mat-option value="12">12</mat-option>
+      <mat-option value="13">13</mat-option>
+      <mat-option value="14">14</mat-option>
+      <mat-option value="15">15</mat-option>
+      <mat-option value="16">16</mat-option>
+      <mat-option value="17">17</mat-option>
+      <mat-option value="18">18</mat-option>
+      <mat-option value="19">19</mat-option>
+      <mat-option value="20">20</mat-option>
+      <mat-option value="21">21</mat-option>
+      <mat-option value="22">22</mat-option>
+      <mat-option value="23">23</mat-option>
+      <mat-option value="24">24</mat-option>
+      <mat-option value="25">25</mat-option>
+      <mat-option value="26">26</mat-option>
+      <mat-option value="27">27</mat-option>
+      <mat-option value="28">28</mat-option>
+      <mat-option value="29">29</mat-option>
+      <mat-option value="30">30</mat-option>
+      <mat-option value="31">31</mat-option>
+      <mat-option value="32">32</mat-option>
+      <mat-option value="33">33</mat-option>
+      <mat-option value="34">34</mat-option>
+      <mat-option value="35">35</mat-option>
+      <mat-option value="36">36</mat-option>
+      <mat-option value="37">37</mat-option>
+      <mat-option value="38">38</mat-option>
+      <mat-option value="39">39</mat-option>
+      <mat-option value="40">40</mat-option>
+      <mat-option value="41">41</mat-option>
+      <mat-option value="42">42</mat-option>
+      <mat-option value="43">43</mat-option>
+      <mat-option value="44">44</mat-option>
+      <mat-option value="45">45</mat-option>
+      <mat-option value="46">46</mat-option>
+      <mat-option value="47">47</mat-option>
+      <mat-option value="48">48</mat-option>
+      <mat-option value="49">49</mat-option>
+      <mat-option value="50">50</mat-option>
+      <mat-option value="51">51</mat-option>
+      <mat-option value="52">52</mat-option>
+      <mat-option value="53">53</mat-option>
+      <mat-option value="54">54</mat-option>
+      <mat-option value="55">55</mat-option>
+      <mat-option value="56">56</mat-option>
+      <mat-option value="57">57</mat-option>
+      <mat-option value="58">58</mat-option>
+      <mat-option value="59">59</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </p>
+
+  <p>Duration:    
+  <mat-form-field style="width: 55px">
+    <mat-select placeholder="Hrs">
+      <mat-option value="00">00</mat-option>
+      <mat-option value="01">01</mat-option>
+      <mat-option value="02">02</mat-option>
+      <mat-option value="03">03</mat-option>
+      <mat-option value="04">04</mat-option>
+      <mat-option value="05">05</mat-option>
+      <mat-option value="06">06</mat-option>
+      <mat-option value="07">07</mat-option>
+      <mat-option value="08">08</mat-option>
+      <mat-option value="09">09</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="11">11</mat-option>
+      <mat-option value="12">12</mat-option>
+      <mat-option value="13">13</mat-option>
+      <mat-option value="14">14</mat-option>
+      <mat-option value="15">15</mat-option>
+      <mat-option value="16">16</mat-option>
+      <mat-option value="17">17</mat-option>
+      <mat-option value="18">18</mat-option>
+      <mat-option value="19">19</mat-option>
+      <mat-option value="20">20</mat-option>
+      <mat-option value="21">21</mat-option>
+      <mat-option value="22">22</mat-option>
+      <mat-option value="23">23</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field style="width: 55px">
+    <mat-select placeholder="Mins">
+      <mat-option value="00">00</mat-option>
+      <mat-option value="01">01</mat-option>
+      <mat-option value="02">02</mat-option>
+      <mat-option value="03">03</mat-option>
+      <mat-option value="04">04</mat-option>
+      <mat-option value="05">05</mat-option>
+      <mat-option value="06">06</mat-option>
+      <mat-option value="07">07</mat-option>
+      <mat-option value="08">08</mat-option>
+      <mat-option value="09">09</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="11">11</mat-option>
+      <mat-option value="12">12</mat-option>
+      <mat-option value="13">13</mat-option>
+      <mat-option value="14">14</mat-option>
+      <mat-option value="15">15</mat-option>
+      <mat-option value="16">16</mat-option>
+      <mat-option value="17">17</mat-option>
+      <mat-option value="18">18</mat-option>
+      <mat-option value="19">19</mat-option>
+      <mat-option value="20">20</mat-option>
+      <mat-option value="21">21</mat-option>
+      <mat-option value="22">22</mat-option>
+      <mat-option value="23">23</mat-option>
+      <mat-option value="24">24</mat-option>
+      <mat-option value="25">25</mat-option>
+      <mat-option value="26">26</mat-option>
+      <mat-option value="27">27</mat-option>
+      <mat-option value="28">28</mat-option>
+      <mat-option value="29">29</mat-option>
+      <mat-option value="30">30</mat-option>
+      <mat-option value="31">31</mat-option>
+      <mat-option value="32">32</mat-option>
+      <mat-option value="33">33</mat-option>
+      <mat-option value="34">34</mat-option>
+      <mat-option value="35">35</mat-option>
+      <mat-option value="36">36</mat-option>
+      <mat-option value="37">37</mat-option>
+      <mat-option value="38">38</mat-option>
+      <mat-option value="39">39</mat-option>
+      <mat-option value="40">40</mat-option>
+      <mat-option value="41">41</mat-option>
+      <mat-option value="42">42</mat-option>
+      <mat-option value="43">43</mat-option>
+      <mat-option value="44">44</mat-option>
+      <mat-option value="45">45</mat-option>
+      <mat-option value="46">46</mat-option>
+      <mat-option value="47">47</mat-option>
+      <mat-option value="48">48</mat-option>
+      <mat-option value="49">49</mat-option>
+      <mat-option value="50">50</mat-option>
+      <mat-option value="51">51</mat-option>
+      <mat-option value="52">52</mat-option>
+      <mat-option value="53">53</mat-option>
+      <mat-option value="54">54</mat-option>
+      <mat-option value="55">55</mat-option>
+      <mat-option value="56">56</mat-option>
+      <mat-option value="57">57</mat-option>
+      <mat-option value="58">58</mat-option>
+      <mat-option value="59">59</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </p>
+  <br>
+
+  <button mat-raised-button (click)="addJam()">Add</button>
+  <button mat-flat-button type="button" name="button" (click)="closeDialog()" style="color: grey;"> Cancel</button>
+</div>

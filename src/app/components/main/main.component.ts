@@ -41,10 +41,12 @@ this.myDate = new Date() ;
     }, 1000);
     this.jamCondition = false;
 }
+
 constructor(
    private globalService: GlobalService,
    private dialog: MatDialog
  ) { }
+
   stop(): void{             //stop button
   this.jamCondition = true;
   this.lastJamDuration = this.timer;
@@ -52,6 +54,7 @@ constructor(
   this.globalService.setStatus(false);
   this.openDialog();
 }
+
 cancel(): void{            //cancel button
   this.jamCondition = true;
   this.globalService.setStatus(false);
@@ -59,14 +62,12 @@ cancel(): void{            //cancel button
 
 
 
-  openDialog() {          //dialog
+openDialog() {          //dialog
 
-      const dialogRef = this.dialog.open(DialogComponent, {
-        width: '250px'
-      });
-
-
-  }
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px'
+    });
+}
 
 
 }
