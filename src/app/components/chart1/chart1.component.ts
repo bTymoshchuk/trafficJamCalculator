@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
 import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
 
-
-
 @Component({
   selector: 'app-chart1',
   templateUrl: './chart1.component.html',

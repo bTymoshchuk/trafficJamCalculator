@@ -1,7 +1,6 @@
 
-<!-- This component represents the chart of reasons at the statistics page -->
-<mat-card>
-  <div style="display: block">
+<!-- This component represents the chart of reasons -->
+  <div style="display: block" class="chart">
     <canvas baseChart
             [datasets]="ChartData"
             [labels]="ChartLabels"
@@ -10,4 +9,3 @@
             [chartType]="ChartType">
     </canvas>
   </div>
-</mat-card>

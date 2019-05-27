@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
@@ -46,6 +44,11 @@ import { AddjamComponent } from './components/addjam/addjam.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/';
 import { Chart2Component } from './components/chart2/chart2.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { ChartsCardComponent } from './components/charts-card/charts-card.component';
+import { Statscard2Component } from './components/statscard2/statscard2.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -53,14 +56,11 @@ import { Chart2Component } from './components/chart2/chart2.component';
 
 @NgModule({
   exports: [
-
-
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
     MatButtonModule,
     MatButtonToggleModule,
-
     MatCheckboxModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -83,6 +83,7 @@ import { Chart2Component } from './components/chart2/chart2.component';
 
 
 
+
   ],
   declarations: [
     AppComponent,
@@ -98,6 +99,9 @@ import { Chart2Component } from './components/chart2/chart2.component';
     StatscardComponent,
     AddjamComponent,
     Chart2Component,
+    ChartsCardComponent,
+    Statscard2Component,
+
 
 
   ],
@@ -125,7 +129,9 @@ import { Chart2Component } from './components/chart2/chart2.component';
     MatCardModule,
     ChartsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTabsModule,
+    HttpClientModule
 
 
 

@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MainComponent } from './components/main/main.component';
+import { HttpClient } from '@angular/common/http';
+import { Jam } from 'src/app/jam';
 
 @Injectable({
   providedIn: 'root'
@@ -7,43 +9,43 @@ import { MainComponent } from './components/main/main.component';
 export class GlobalService {
  duration = 0;
  start = 0;
- reason = "";
+ reason = '';
  jamStatus = false ;
 
- setDuration(a: number){
+ setDuration(a: number) {
    this.duration = a;
  }
 
- getDuration(){
+ getDuration() {
    return this.duration;
  }
 
- setStart(a: number){
+ setStart(a: number) {
    this.start = a;
  }
 
- getStart(){
+ getStart() {
    return this.start;
  }
 
- setReason(a: string){
+ setReason(a: string) {
    this.reason = a;
  }
 
- getReason(){
+ getReason() {
    return this.reason;
  }
 
- setStatus(a: boolean){
+ setStatus(a: boolean) {
    this.jamStatus = a;
  }
 
- getStatus(){
+ getStatus() {
    return this.jamStatus;
  }
 
- toggleStatus(){
+ toggleStatus() {
    this.jamStatus = !this.jamStatus;
  }
-  constructor() { }
+ constructor(private http: HttpClient) { }
 }
