@@ -1,12 +1,12 @@
-<!-- This component represents the day progress spinner at the statistics page -->
+<!-- Day progress spinner at the statistics page -->
 <mat-card class="spinnercard">
   <h4>Current day:</h4>
 
-  <div class="spinner mat-elevation-z2">
+  <div class="spinner mat-elevation-z1">
 
     <mat-progress-spinner
     color="primary"
-    [value]="value"
+    [value]="spinnerValue"
     diameter="160"
     [mode]="mode">
     </mat-progress-spinner>

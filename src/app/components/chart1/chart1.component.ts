@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
-import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
+import {ReasonsService} from 'src/app/reasons.service';
 
 @Component({
   selector: 'app-chart1',
@@ -8,53 +7,32 @@ import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/tr
   styleUrls: ['./chart1.component.css']
 })
 
-export class Chart1Component implements OnInit {
-  public ChartOptions = {                                          //chart js variables
+export class Chart1Component implements OnInit {   // the chart of reasons
+  public ChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
   public ChartLabels = [];
   public ChartType = 'doughnut';
   public ChartLegend = true;
-  public ChartColors = []
+  public ChartColors = [];
   public ChartData = [
-    {data: [], backgroundColor: [ "#2D3A85", "#213DDB", "#3E51A8", "#7A85B7" ]}, // TODO:
+    {data: [],
+      // TODO:
+     backgroundColor: [ '#2D3A85', '#213DDB', '#3E51A8', '#7A85B7' ]},
   ];
 
-  decreasingBubbleSort( a: number[] , b:string[] ){
-    let n: number;
-    let s: string;
-    for (let i = 0; i < a.length -  1; i++) {
-        for (let j = 0; j < a.length - i - 1; j++) {
-            if (a[j] < a[j+1]) {
-               n = a[j];
-               a[j] = a[j+1];
-               a[j+1] = n;
-               s = b[j];
-               b[j] = b[j+1];
-               b[j+1] = s;
-            }
-        }
-    }
-}
-  getReasons(){                         //fulls ChartLabels and  ChartData[0].data and bubblesorts them
-    if(JAMS.length>0){
-      for (let i = 0; i < JAMS.length; i++) {
-          if(this.ChartLabels.includes(JAMS[i].reason)){
-            this.ChartData[0].data[this.ChartLabels.indexOf(JAMS[i].reason)]++;
-          }else{
-            this.ChartLabels.push(JAMS[i].reason);
-            this.ChartData[0].data.push(1);
-          }
-        }
-        this.decreasingBubbleSort(this.ChartData[0].data,   this.ChartLabels);
-      }
-    }
 
-  constructor() { }
+
+  constructor(
+    private  reasonsService: ReasonsService,
+  ) {}
 
 
   ngOnInit() {
-    this.getReasons();
+    this.reasonsService.init();
+    this.reasonsService.decreasingBubbleSort(this.reasonsService.Amounts, this.reasonsService.Reasons);
+    this.ChartLabels = this.reasonsService.getReasons();
+    this.ChartData[0].data = this.reasonsService.getAmounts();
     }
 }

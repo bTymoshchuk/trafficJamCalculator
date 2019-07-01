@@ -1,23 +1,25 @@
+<!-- New Jam dialog window on the statistics page -->
+
 <div class="dialog">
   <mat-form-field>
-    <mat-select placeholder="Reason">
-      <mat-option value="option1">Weather</mat-option>
-      <mat-option value="option2">Traffic overload</mat-option>
-      <mat-option value="option3">Road accident</mat-option>
-      <mat-option value="option4">Obstacles</mat-option>
-      <mat-option value="option5">Unknown</mat-option>
+    <mat-select [(value)]="reason" placeholder="Reason">
+      <mat-option value="Weather">Weather</mat-option>
+      <mat-option value="Traffic overload">Traffic overload</mat-option>
+      <mat-option value="Road accident">Road accident</mat-option>
+      <mat-option value="Obstacles">Obstacles</mat-option>
+      <mat-option value="Unknown">Unknown</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput [max]="maxDate" [matDatepicker]="myDatepicker" placeholder="Start date">
+    <input matInput [max]="maxDate" [matDatepicker]="myDatepicker" [(ngModel)]="startDate" placeholder="Start date">
     <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
     <mat-datepicker #myDatepicker></mat-datepicker>
   </mat-form-field>
 
   <p>Start time:
   <mat-form-field style="width: 55px">
-    <mat-select placeholder="Hrs">
+    <mat-select placeholder="Hrs" [(value)]="startHours">
       <mat-option value="00">00</mat-option>
       <mat-option value="01">01</mat-option>
       <mat-option value="02">02</mat-option>
@@ -45,8 +47,8 @@
     </mat-select>
 </mat-form-field>
 
-<mat-form-field style="width: 55px">
-    <mat-select placeholder="Mins">
+<mat-form-field style="width: 55px"  >
+    <mat-select placeholder="Mins" [(value)]="startMinutes">
       <mat-option value="00">00</mat-option>
       <mat-option value="01">01</mat-option>
       <mat-option value="02">02</mat-option>
@@ -113,7 +115,7 @@
 
   <p>Duration:   
   <mat-form-field style="width: 55px">
-    <mat-select placeholder="Hrs">
+    <mat-select placeholder="Hrs" [(value)]="durationHours">
       <mat-option value="00">00</mat-option>
       <mat-option value="01">01</mat-option>
       <mat-option value="02">02</mat-option>
@@ -142,8 +144,7 @@
 </mat-form-field>
 
 <mat-form-field style="width: 55px">
-    <mat-select placeholder="Mins">
-      <mat-option value="00">00</mat-option>
+    <mat-select placeholder="Mins" [(value)]="durationMinutes">
       <mat-option value="01">01</mat-option>
       <mat-option value="02">02</mat-option>
       <mat-option value="03">03</mat-option>
@@ -203,11 +204,11 @@
       <mat-option value="57">57</mat-option>
       <mat-option value="58">58</mat-option>
       <mat-option value="59">59</mat-option>
-    </mat-select>
+    </mat-select >
   </mat-form-field>
   </p>
   <br>
 
-  <button mat-raised-button (click)="addJam()">Add</button>
+  <button mat-raised-button (click)="createNewJam()">Add</button>
   <button mat-flat-button type="button" name="button" (click)="closeDialog()" style="color: grey;"> Cancel</button>
 </div>

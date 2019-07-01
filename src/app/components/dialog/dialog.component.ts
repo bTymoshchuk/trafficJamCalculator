@@ -12,18 +12,14 @@ import { GlobalService } from 'src/app/global.service';
 })
 export class DialogComponent implements OnInit {
 
-
-
-
-
   constructor(
       public dialogRef: MatDialogRef<DialogComponent>,
       private globalService: GlobalService
   ) {}
 
-  duration = this.globalService.getDuration();
+  public duration = this.globalService.newJam.duration;
 
-  closeDialog(): void {
+  public closeDialog(): void {
       this.dialogRef.close();
     }
 

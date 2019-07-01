@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {GlobalService} from '../../global.service';
+import {FacebookService} from 'ngx-facebook';
+
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  constructor( private globalService: GlobalService,
+               private fb: FacebookService) { }
 
-  ngOnInit() {
-  }
+   public fbPost( body: string) {                               // TEMP
+     this.fb.api('/100005684555917/feed',
+       'post',
+       {message: body})
+       .then((res) => console.log(res))
+       .catch((e) => console.log(e));
+   }
 
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-<!--This component represents the list of Jams-->
+<!--List of Jams-->
 <mat-card>
 
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows  matSort>
@@ -10,7 +10,7 @@
 
   <ng-container matColumnDef="begin">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-    <td mat-cell *matCellDef="let jam"> {{jam.begin | date:'dd/mm/yy HH:ss'}}</td>
+    <td mat-cell *matCellDef="let jam"> {{jam.begin | date:'dd/MM/yy HH:mm'}}</td>
   </ng-container>
 
   <ng-container matColumnDef="reason">
@@ -20,44 +20,39 @@
 
   <ng-container matColumnDef="duration">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
-    <td mat-cell *matCellDef="let jam"> {{jam.duration | date:'HH:mm:ss' : '+0000'}}</td>
+    <td mat-cell *matCellDef="let jam"> {{jam.duration | date:'H:mm:ss' : '+0000'}}</td>
   </ng-container>
 
-  <!--  <ng-container matColumnDef="edit">
-  <th mat-header-cell *matHeaderCell ></th>
-  <td mat-cell *matCellDef="let jam">
-  <button mat-flat-button type="button" name="button"> <mat-icon></mat-icon></button>
-  </td>
-  </ng-container>-->
 
   <ng-container matColumnDef="expandedDetail">
-
     <td mat-cell
     *matCellDef="let jam"
     [attr.colspan]="displayedColumns.length">
-
       <div class="expandedContent  "
       [@detailExpand]="jam == selectedJam ? 'expanded' : 'collapsed'">
 
         <div *ngIf="jamSelected" >
 
-          <mat-form-field>
+          <button class="editButton"
+                  mat-flat-button
+                  type="button"
+                  name="button"
+                  (click)="editJam(selectedJam.id)">
+            <mat-icon style='color:black;' >edit</mat-icon>
+          </button>
 
-            <input matInput [(ngModel)]="selectedJam.duration" >
-            <button mat-raised-button type="button" name="button">Submit</button>
-
-          </mat-form-field>
-
-          <button class="deleteButton"mat-flat-button type="button" name="button">
+          <button class="deleteButton"
+                  mat-flat-button
+                  type="button"
+                  name="button"
+                  (click)="removeJam()">
             <mat-icon style='color:black;' >delete</mat-icon>
           </button>
 
         </div>
 
       </div>
-
     </td>
-
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -75,7 +70,7 @@
   <mat-paginator class="paginator" pageSize="15" ></mat-paginator>
 
   <div class="report">
-    <button mat-flat-button type="button" name="button" (click)="openAddjamWindow()"  style="color: grey;">+ New jam</button>
+    <button mat-flat-button type="button" name="button" (click)="newJam()"  style="color: grey;">+ New jam</button>
     <app-report></app-report>
   </div>
 

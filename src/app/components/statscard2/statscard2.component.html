@@ -1,3 +1,12 @@
 <mat-card>
+  <mat-list>
+    <mat-list-item >
+      Average jam duration: {{averageDuration | date: ' HH:mm:ss ':'+0000'}}
+    </mat-list-item>
+    <mat-list-item>
+      Most common reason{{s}}: {{mostCommonReason}}
+    </mat-list-item>
+
+  </mat-list>
 
 </mat-card>

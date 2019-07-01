@@ -1,6 +1,6 @@
 export class Jam {
-  id: number;
-  reason: string;
-  begin: number;
-  duration: number;
+  public id: number;
+  public reason: string;
+  public begin: number;
+  public duration: number;
 }

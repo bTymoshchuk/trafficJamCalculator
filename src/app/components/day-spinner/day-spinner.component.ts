@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
-import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
+import {GlobalService} from '../../global.service';
+
 
 @Component({
   selector: 'app-day-spinner',
@@ -9,41 +8,36 @@ import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/tr
   styleUrls: ['./day-spinner.component.css']
 })
 export class DaySpinnerComponent implements OnInit {
-  JAMS_DATA = JAMS;
-  value = 0;
-  mode = 'determinate';
-  currentDayTime = 0;
+  private JAMS_DATA = this.globalService.JAMS;
+  public spinnerValue = 0;
+  public mode = 'determinate';
+  public currentDayTime = 0;
 
-  getTotalDuration(){          //returns total duration of all jams in milliseconds
-    var j = 0;
-    for (let i = 0; i < this.JAMS_DATA.length; i++) {
-        j = j + this.JAMS_DATA[i].duration;
+  constructor(
+    public globalService: GlobalService,
+  ) { }
+
+
+  public getTotalDuration() {          // returns total duration of all jams in milliseconds
+    let  j = 0;
+    for (const jam of this.JAMS_DATA) {
+        j = j + jam.duration;
     }
     return j;
 
   }
-  getAverageDuration(){        //returns average duration
-    return this.getTotalDuration()/this.JAMS_DATA.length;
+
+  public getCurrentDayTime() {         // returns current working day time
+  return this.getTotalDuration() % 28000000;
   }
 
-  getCurrentDayTime(){          //returns current working day time
-  return this.getTotalDuration()%28000000;
+  public getSpinnerValue() {           // returns spinner value(% of current working day spent in jams)
+    return this.currentDayTime / 28000000 * 100;
   }
-
-  getSpinnerValue(){             //returns spinner value(% of current working day spent in jams)
-    return this.currentDayTime/28000000*100;
-  }
-
-  constructor() { }
 
   ngOnInit() {
     this.currentDayTime = this.getCurrentDayTime();
-    setInterval(()=>{
-
-      this.currentDayTime = this.getCurrentDayTime();
-      this.value = this.getSpinnerValue();
-      }
-      ,200);
+    this.spinnerValue = this.getSpinnerValue();
   }
 
 }

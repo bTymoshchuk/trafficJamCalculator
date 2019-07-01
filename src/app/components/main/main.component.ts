@@ -1,9 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import{Jam} from 'src/app/jam';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDialog, MatDialogRef} from "@angular/material";
+import { Component, OnInit} from '@angular/core';
+import {MatDialog} from '@angular/material';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { GlobalService } from 'src/app/global.service';
+
 
 @Component({
   selector: 'app-main',
@@ -11,63 +10,78 @@ import { GlobalService } from 'src/app/global.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  myDate = new Date();
-  startDate = new Date();
-  date1 = 0;
-  timer = new Date();
-  lastJamDuration = new Date();
-  jamCondition  = true;
+  public startDate = new Date();
+  public timer = new Date();
+  public jamCondition  = true;
+  public selectedReason = 'Unknown';
+  public date = new Date();
 
-
-
-  ngOnInit() {
-    this.utcTime();
+  public getJamCondition(): void {   // checks for running jams
+      if (this.globalService.lastJam.duration === 0) {
+        this.startDate.setTime(this.globalService.lastJam.begin);
+        this.selectedReason = this.globalService.lastJam.reason;
+        this.timer = new Date();
+        this.timer.setTime(this.timer.getTime() - this.startDate.getTime());
+        setInterval(() => {         // timer
+          this.timer = new Date();
+          this.timer.setTime(this.timer.getTime() - this.startDate.getTime());
+        }, 1000);
+        this.jamCondition = false;
+      } else {
+        this.jamCondition = true;
+      }
   }
 
-  utcTime(): void {           // digital clock
+  public clock(): void {             // digital clock
+    this.date = new Date();
     setInterval(() => {
-this.myDate = new Date() ;
-}, 1000);
-}
+      this.date = new Date();
+  }, 1000);
+  }
 
-  start(): void{              //start button
-  this.startDate = new Date();
-  this.timer = new Date();
-  this.globalService.setStatus(true);
-  this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
-  setInterval(() => {         //timer
-    this.timer = new Date();
-    this.timer.setTime(this.timer.getTime() - this.startDate.getTime() );
-    }, 1000);
-    this.jamCondition = false;
-}
+  public start(): void {              // start button
+    if (this.globalService.lastJam.duration !== 0) {
+      this.startDate = new Date();
+      this.globalService.newJam.id = null;
+      this.globalService.newJam.begin = this.startDate.getTime();
+      this.globalService.newJam.duration = 0;
+      this.globalService.newJam.reason = this.selectedReason;
+      this.globalService.setJams(this.globalService.createJam(this.globalService.newJam));
+    }
+    this.getJamCondition();
+  }
 
-constructor(
-   private globalService: GlobalService,
-   private dialog: MatDialog
- ) { }
+  public stop(): void {               // stop button
+    this.globalService.newJam = this.globalService.lastJam;
+    this.globalService.newJam.duration = this.timer.getTime();
+    this.globalService.setJams(this.globalService.updateJam(this.globalService.newJam));
+    this.getJamCondition();
+    this.openDialog();
 
-  stop(): void{             //stop button
-  this.jamCondition = true;
-  this.lastJamDuration = this.timer;
-  this.globalService.setDuration(this.lastJamDuration.getTime());
-  this.globalService.setStatus(false);
-  this.openDialog();
-}
+  }
 
-cancel(): void{            //cancel button
-  this.jamCondition = true;
-  this.globalService.setStatus(false);
+  public cancel(): void {            // cancel button
+    this.globalService.setJams(this.globalService.delete(this.globalService.lastJam.id));
+    this.getJamCondition();
 }
 
 
 
-openDialog() {          //dialog
+  public openDialog() {              // dialog window
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '250px'
     });
 }
 
+  constructor(
+    private globalService: GlobalService,
+    private dialog: MatDialog,
+  ) { }
 
+  ngOnInit() {
+    this.getJamCondition();
+    this.clock();
+
+  }
 }

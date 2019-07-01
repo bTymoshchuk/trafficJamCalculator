@@ -1,30 +1,29 @@
-<!-- This component remresents the Main page  -->
+<!-- Main page  -->
 <div class="mainComponent ">
 
-    <!-- Start button block-->
+    <!-- Start block-->
   <div *ngIf="jamCondition ; else elseBlock" >
 
-      <h1 class="clock">{{myDate | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
+      <h1 class="clock">{{date | date: 'HH:mm:ss'  }}</h1><br>   <!-- digital clock -->
 
       <mat-form-field>
 
-        <mat-select placeholder="Reason">
-          <mat-option value="option1">Weather</mat-option>
-          <mat-option value="option2">Traffic overload</mat-option>
-          <mat-option value="option3">Road accident</mat-option>
-          <mat-option value="option4">Obstacles</mat-option>
-          <mat-option value="option5">Unknown</mat-option>
+        <mat-select [(value)]="selectedReason" placeholder="Reason">
+          <mat-option value="Weather">Weather</mat-option>
+          <mat-option value="Traffic overload">Traffic overload</mat-option>
+          <mat-option value="Road accident">Road accident</mat-option>
+          <mat-option value="Obstacles">Obstacles</mat-option>
+          <mat-option value="Unknown">Unknown</mat-option>
         </mat-select>
 
       </mat-form-field>
-
       <br>
-
       <button mat-raised-button  (click)="start()" class="mainButton">Start</button>
 
   </div>
 
-    <!-- Stop button block-->
+
+    <!-- Stop block-->
   <ng-template #elseBlock>
 
     <h1 class="clock" style="margin-top: 36px">{{timer  | date: 'HH:mm:ss' : '+0000' }}</h1>   <!-- timer -->

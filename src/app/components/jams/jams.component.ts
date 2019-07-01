@@ -1,22 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatSortModule} from '@angular/material/sort';
 import { MatTableDataSource ,
          MatPaginator,
          MatSort} from '@angular/material';
-import {MatTableModule} from '@angular/material/table';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {MatIconModule} from '@angular/material/icon';
-import { Jam } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jam';
-import { JAMS } from 'C:/Users/Borys.Tymoshchuk/Projects/trafficJamCalculator/trafficJam/src/app/jams-list';
-import {MatDialog, MatDialogRef} from "@angular/material";
+import { Jam} from '../../jam';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import { AddjamComponent } from 'src/app/components/addjam/addjam.component';
-
-
-
-
-
+import {GlobalService} from '../../global.service';
+import {EditJamComponent} from '../edit-jam/edit-jam.component';
 
 
 @Component({
@@ -32,58 +23,50 @@ import { AddjamComponent } from 'src/app/components/addjam/addjam.component';
   ],
 })
 export class JamsComponent implements OnInit {
-  JAMS_DATA = JAMS;                                               //array of jams
-  selectedJam: Jam | null;                                        //
-  jamSelected = false;
-  displayedColumns: string[] = ['begin','reason',  'duration'];
-  dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
+  public JAMS_DATA: Jam[] = this.globalService.JAMS;                                      // array of jams
+  public selectedJam: Jam | null;                                        //
+  public jamSelected = false;
+  public displayedColumns: string[] = ['begin', 'reason',  'duration'];
+  public dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
 
   constructor(
       private addjam: MatDialog,
+      private globalService: GlobalService,
   ) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  getTotalDuration(){          //returns total duration of all jams in milliseconds
-    var j = 0;
-    for (let i = 0; i < this.JAMS_DATA.length; i++) {
-        j = j + this.JAMS_DATA[i].duration;
-    }
-    return j;
-
-  }
-  getAverageDuration(){        //returns average duration
-    return this.getTotalDuration()/this.JAMS_DATA.length;
-  }
-
-  getCurrentDayTime(){          //returns current working day time
-  return this.getTotalDuration()%28000000;
-  }
-
-  getWorkingDays(){           //returns an amount of working days spent in jams
-    return (this.getTotalDuration()/28800000>>0);
-  }
-
-
-  onSelect(jam: Jam): void { //selects a jam in the table
-    if(this.selectedJam === jam){
+  public onSelect(jam: Jam): void { // selects a jam in the table
+    if (this.selectedJam === jam) {
       this.selectedJam = null;
       this.jamSelected = false;
-    }
-    else{
+    } else {
       this.selectedJam = jam;
       this.jamSelected = true;
     }
   }
 
-  openAddjamWindow() {          //dialog
+  public newJam() {          // new jam window
 
       const dialogRef = this.addjam.open(AddjamComponent, {
         width: '250px'
       });
   }
 
-  ngOnInit() {
+  public editJam(id: number): void {
+      this.globalService.newJam.id = id;
+      const dialogRef = this.addjam.open(EditJamComponent, {
+        width: '250px'
+  });
+  }
+
+  public removeJam(): void {
+    this.globalService.setJams(this.globalService.delete(this.selectedJam.id));
+    console.log('-Deleted jam Id:' + this.selectedJam.id);
+  }
+
+ngOnInit() {
+    this.JAMS_DATA = this.globalService.JAMS;
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }

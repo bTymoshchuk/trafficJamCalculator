@@ -17,9 +17,9 @@ import {
   MatButtonToggleModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  MatPaginatorModule ,
+  MatPaginatorModule, MatProgressBarModule,
   MatSortModule,
-}from '@angular/material';
+} from '@angular/material';
 import { ReportComponent } from './components/report/report.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NavigationComponent } from './components/navigation/navigation.component';
@@ -28,12 +28,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input'
+import {MatInputModule} from '@angular/material/input';
 import {CdkTableModule} from '@angular/cdk/table';
-import {MatDialogModule} from "@angular/material";
+import {MatDialogModule} from '@angular/material';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { GlobalService } from './global.service';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatCardModule} from '@angular/material/card';
 import { ChartsModule } from 'ng2-charts';
@@ -48,37 +47,18 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ChartsCardComponent } from './components/charts-card/charts-card.component';
 import { Statscard2Component } from './components/statscard2/statscard2.component';
 import { HttpClientModule } from '@angular/common/http';
-
-
-
+import {ReasonsService} from './reasons.service';
+import {AppLoadService} from './app-load.service';
+import { RefreshComponent } from './components/refresh/refresh.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import {FacebookModule, FacebookService} from 'ngx-facebook';
+import { EditJamComponent } from './components/edit-jam/edit-jam.component';
 
 
 
 @NgModule({
   exports: [
-    MatAutocompleteModule,
-    MatBadgeModule,
-    MatBottomSheetModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-    BrowserAnimationsModule ,
-    MatInputModule,
-    CdkTableModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatDialogModule,
-    MainComponent,
-    DialogComponent,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
+
 
 
 
@@ -101,6 +81,9 @@ import { HttpClientModule } from '@angular/common/http';
     Chart2Component,
     ChartsCardComponent,
     Statscard2Component,
+    RefreshComponent,
+    LoadingComponent,
+    EditJamComponent,
 
 
 
@@ -122,7 +105,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     CdkTableModule,
     MatTableModule,
-    MatPaginatorModule ,
+    MatPaginatorModule,
     MatSortModule,
     MatDialogModule,
     MatProgressSpinnerModule,
@@ -131,13 +114,14 @@ import { HttpClientModule } from '@angular/common/http';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    MatProgressBarModule,
+    FacebookModule.forRoot(),
 
 
   ],
-  providers: [ GlobalService, MatDatepickerModule ],
+  providers: [ GlobalService, MatDatepickerModule, ReasonsService, AppLoadService , FacebookService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent, AddjamComponent]
+  entryComponents: [DialogComponent, AddjamComponent, EditJamComponent]
 })
 export class AppModule { }

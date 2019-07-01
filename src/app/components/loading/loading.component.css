@@ -1,0 +1,15 @@
+DIV{
+  text-align: center;
+  width: 60%;
+  height: 50px;
+  border-radius: 0.02em;
+  border: 1px grey ;
+  padding: 1em;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+H3{
+  color: gray;
+}

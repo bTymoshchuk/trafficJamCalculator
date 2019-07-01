@@ -1,10 +1,30 @@
-<!--This component represents Settings page-->
+<!--Settings page-->
 <div class="settings">
 
   <mat-checkbox checked color="primary">post statistics on Facebook</mat-checkbox>
 
   <p>Connect to Facebook:</p>
 
-  <button mat-raised-button color="primary" name="button">*facebook button*</button>
+  <div class="fb-login-button"
+       data-width="160"
+       data-size="medium"
+       data-button-type="login_with"
+       data-auto-logout-link="true"
+       data-use-continue-as="false"
+       data-scope="manage_pages, publish_pages" >
+  </div>
+  <!--TEMP-->
+  <br>
+  <br>
+  <button mat-flat-button color="primary" (click)="globalService.portJams()">Export jams list</button>
+
+  <br>
+  <br>
+
+  <button mat-flat-button color="warn" (click)="globalService.setJams(globalService.deleteAll())">DELETE EVERYTHING</button>
+  <br>
+  <br>
+  <button mat-button color="primary"  (click)="fbPost('Hello world!')"> Hello world!</button>
+
 
 </div>

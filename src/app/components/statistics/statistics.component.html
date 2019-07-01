@@ -1,4 +1,5 @@
-<!-- This component represents Statistics page -->
+<!-- Statistics page -->
+<div *ngIf="existingJams ; else elseBlock" >
 <div class="stats">
   <div class="container content">
     <div class="row">
@@ -35,3 +36,13 @@
      </div>
    </div>
  </div>
+</div>
+
+
+<ng-template #elseBlock>
+    <div class="noJams">
+      <h2>It seems like you don't have any jams yet...</h2>
+      <br>
+      <button mat-raised-button color="primary" (click)="newJam()">Create a new one!</button>
+    </div>
+</ng-template>
