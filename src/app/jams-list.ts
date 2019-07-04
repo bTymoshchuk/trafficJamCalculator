@@ -1,4 +1,5 @@
-import {Jam} from './jam';                    // TEMP
+// TEMP
+import {Jam} from './jam';
 
 export let JAMS: Jam[] = [
   {id: 1, reason: 'Obstacles', begin: 1550473513000, duration: 5351822},

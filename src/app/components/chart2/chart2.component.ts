@@ -11,7 +11,8 @@ import {GlobalService} from '../../global.service';
   templateUrl: './chart2.component.html',
   styleUrls: ['./chart2.component.css']
 })
-export class Chart2Component implements OnInit {      // the chart of days
+// Chart of days
+export class Chart2Component implements OnInit {
   public amounts: number[] = [0, 0, 0, 0, 0, 0, 0];
   public barChartOptions: ChartOptions = {
     responsive: true,
@@ -33,7 +34,8 @@ export class Chart2Component implements OnInit {      // the chart of days
   ];
   date = new Date();
 
-  private getDays() {                                  // fills barChartData[0].data with amounts of jams for each day of week
+  // Fills barChartData[0].data with amounts of jams for each day of week
+  public getDays() {
     for (const jam of this.globalService.JAMS) {
       this.date.setTime(jam.begin);
       let index = this.date.getDay() - 1;

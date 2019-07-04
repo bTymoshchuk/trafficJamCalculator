@@ -10,13 +10,11 @@ export class AppLoadService {
     constructor(
       private globalService: GlobalService,
       private fb: FacebookService,
-    ) {
-      this.initializeApp();
-    }
+    ) { }
   public initializeApp(): void {
       this.globalService.setJams(this.globalService.getAllJams());
       const initParams: InitParams = {
-      appId      : '447862259104872',
+        appId      : '447862259104872',
         cookie     : true,
         xfbml      : true,
         version    : 'v3.3'

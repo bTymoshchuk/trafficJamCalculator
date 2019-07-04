@@ -17,7 +17,8 @@ import {
   MatButtonToggleModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  MatPaginatorModule, MatProgressBarModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
   MatSortModule,
 } from '@angular/material';
 import { ReportComponent } from './components/report/report.component';
@@ -47,12 +48,12 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { ChartsCardComponent } from './components/charts-card/charts-card.component';
 import { Statscard2Component } from './components/statscard2/statscard2.component';
 import { HttpClientModule } from '@angular/common/http';
-import {ReasonsService} from './reasons.service';
 import {AppLoadService} from './app-load.service';
 import { RefreshComponent } from './components/refresh/refresh.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import {FacebookModule, FacebookService} from 'ngx-facebook';
 import { EditJamComponent } from './components/edit-jam/edit-jam.component';
+import {StatisticsService} from './statistics.service';
 
 
 
@@ -120,7 +121,7 @@ import { EditJamComponent } from './components/edit-jam/edit-jam.component';
 
 
   ],
-  providers: [ GlobalService, MatDatepickerModule, ReasonsService, AppLoadService , FacebookService],
+  providers: [ GlobalService, MatDatepickerModule, StatisticsService, AppLoadService , FacebookService],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent, AddjamComponent, EditJamComponent]
 })

@@ -1,4 +1,6 @@
 <!-- Statistics page -->
+
+<!-- If there are any jams-->
 <div *ngIf="existingJams ; else elseBlock" >
 <div class="stats">
   <div class="container content">
@@ -38,7 +40,7 @@
  </div>
 </div>
 
-
+<!-- If there are no jams-->
 <ng-template #elseBlock>
     <div class="noJams">
       <h2>It seems like you don't have any jams yet...</h2>

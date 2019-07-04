@@ -16,8 +16,8 @@ export class ReportComponent implements OnInit {
 }
   ngOnInit() {
   }
-
-  public downloadPDF() {                                              // jsPDF report
+  // jsPDF report
+  public downloadPDF() {
     const head = [['Begin', 'Duration', 'Reason']];
     const body = [];
     for (const jam of this.globalService.JAMS) {

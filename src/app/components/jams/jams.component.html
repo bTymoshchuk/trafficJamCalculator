@@ -3,11 +3,6 @@
 
   <table mat-table [dataSource]="dataSource" multiTemplateDataRows  matSort>
 
-  <!--<ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
-    <td mat-cell *matCellDef="let jam"> {{jam.id}}</td>
-  </ng-container>-->
-
   <ng-container matColumnDef="begin">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
     <td mat-cell *matCellDef="let jam"> {{jam.begin | date:'dd/MM/yy HH:mm'}}</td>
@@ -57,20 +52,29 @@
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 
-  <tr mat-row *matRowDef="let jam; columns: displayedColumns;"
-  class="jamRow"
-  [class.selected]="selectedJam === jam"
-  (click) ="onSelect(jam)" >
+  <tr mat-row *matRowDef="let jam;
+    columns: displayedColumns;"
+    class="jamRow"
+   [class.selected]="selectedJam === jam"
+   (click) ="onSelect(jam)" >
   </tr>
 
-  <tr mat-row   *matRowDef="let row; columns: ['expandedDetail']" class="expandedDetail"></tr>
+  <tr mat-row
+      *matRowDef="let row;
+      columns: ['expandedDetail']"
+      class="expandedDetail"></tr>
 
   </table>
 
   <mat-paginator class="paginator" pageSize="15" ></mat-paginator>
 
   <div class="report">
-    <button mat-flat-button type="button" name="button" (click)="newJam()"  style="color: grey;">+ New jam</button>
+    <button mat-flat-button
+            type="button"
+            name="button"
+            (click)="newJam()"
+            style="color: grey;"
+    >+ New jam</button>
     <app-report></app-report>
   </div>
 

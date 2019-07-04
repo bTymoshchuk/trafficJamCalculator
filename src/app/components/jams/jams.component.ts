@@ -22,10 +22,11 @@ import {EditJamComponent} from '../edit-jam/edit-jam.component';
     ]),
   ],
 })
+
 export class JamsComponent implements OnInit {
-  public JAMS_DATA: Jam[] = this.globalService.JAMS;                                      // array of jams
-  public selectedJam: Jam | null;                                        //
-  public jamSelected = false;
+  public JAMS_DATA: Jam[] = this.globalService.JAMS; // Array of jams
+  public selectedJam: Jam | null; // Selected jam in the list
+  public jamSelected = false; // Is true if there is a selected jam
   public displayedColumns: string[] = ['begin', 'reason',  'duration'];
   public dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
 
@@ -36,23 +37,30 @@ export class JamsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  public onSelect(jam: Jam): void { // selects a jam in the table
+
+  // Selecting a jam in the table
+  public onSelect(jam: Jam): void {
+    // If a jam is already selected
     if (this.selectedJam === jam) {
+      // Unselect the jam
       this.selectedJam = null;
       this.jamSelected = false;
     } else {
+      // Else select the jam
       this.selectedJam = jam;
       this.jamSelected = true;
     }
   }
 
-  public newJam() {          // new jam window
+  // New jam window
+  public newJam() {
 
       const dialogRef = this.addjam.open(AddjamComponent, {
         width: '250px'
       });
   }
 
+  // Edit jam window
   public editJam(id: number): void {
       this.globalService.newJam.id = id;
       const dialogRef = this.addjam.open(EditJamComponent, {
@@ -60,6 +68,7 @@ export class JamsComponent implements OnInit {
   });
   }
 
+  // Delete button
   public removeJam(): void {
     this.globalService.setJams(this.globalService.delete(this.selectedJam.id));
     console.log('-Deleted jam Id:' + this.selectedJam.id);

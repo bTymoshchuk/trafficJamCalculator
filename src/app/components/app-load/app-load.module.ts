@@ -1,3 +1,5 @@
+// Used for AppLoadService
+
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {AppLoadService} from '../../app-load.service';

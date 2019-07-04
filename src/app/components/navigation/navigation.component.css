@@ -5,3 +5,11 @@
 .link{
   font-size: 1.33em;
 }
+mat-toolbar-row{
+  width: 100%;
+}
+.fb-login-button{
+  position: relative;
+  float: right;
+
+}

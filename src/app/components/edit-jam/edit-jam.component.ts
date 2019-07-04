@@ -9,6 +9,7 @@ import {GlobalService} from '../../global.service';
 })
 export class EditJamComponent implements OnInit {
 
+  // Maximal start date on the datepicker
   public maxDate = new Date();
   public reason = 'Unknown';
   public startDate = new Date(this.maxDate.getFullYear(), this.maxDate.getMonth(), this.maxDate.getDay(), 0);
@@ -21,20 +22,23 @@ export class EditJamComponent implements OnInit {
     public dialogRef: MatDialogRef<EditJamComponent>,
   ) { }
 
+  // Closes the dialog window
   public closeDialog(): void {
     this.dialogRef.close();
     this.globalService.refresh();
   }
 
+  // Submit button
   public editJam() {
-    this.globalService.newJam.id = null;
+    // Sets newJam's new parameters
     this.globalService.newJam.reason = this.reason;
     this.startDate.setMinutes(parseInt(this.startMinutes, 10));
     this.startDate.setHours(parseInt(this.startHours, 10));
     this.globalService.newJam.begin = this.startDate.getTime();
     this.globalService.newJam.duration = parseInt(this.durationHours, 10) * 3600000 + parseInt(this.durationMinutes, 10) * 60000;
+    this.dialogRef.close();
+    // Saves changes and gets a new JAMS array on GlobalService
     this.globalService.setJams(this.globalService.updateJam(this.globalService.newJam));
-    this.closeDialog();
   }
 
   ngOnInit() { }

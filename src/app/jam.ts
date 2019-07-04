@@ -1,3 +1,4 @@
+// Jam class
 export class Jam {
   public id: number;
   public reason: string;

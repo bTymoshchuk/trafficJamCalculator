@@ -12,14 +12,21 @@ export class SettingsComponent implements OnInit {
 
   constructor( private globalService: GlobalService,
                private fb: FacebookService) { }
-
-   public fbPost( body: string) {                               // TEMP
-     this.fb.api('/100005684555917/feed',
+  // TEMP
+   public fbPost( body: string) {
+      this.fb.api('/me/feed',
        'post',
-       {message: body})
+       {message: body,
+       access_token: this.token()})
        .then((res) => console.log(res))
        .catch((e) => console.log(e));
    }
+
+   public token(): string {
+      console.log(this.fb.getAuthResponse());
+      return  this.fb.getAuthResponse().accessToken;
+   }
+
 
   ngOnInit() {}
 }

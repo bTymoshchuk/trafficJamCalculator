@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ReasonsService} from 'src/app/reasons.service';
+import {StatisticsService} from '../../statistics.service';
 
 @Component({
   selector: 'app-chart1',
@@ -7,7 +7,8 @@ import {ReasonsService} from 'src/app/reasons.service';
   styleUrls: ['./chart1.component.css']
 })
 
-export class Chart1Component implements OnInit {   // the chart of reasons
+// the chart of reasons
+export class Chart1Component implements OnInit {
   public ChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
@@ -18,21 +19,20 @@ export class Chart1Component implements OnInit {   // the chart of reasons
   public ChartColors = [];
   public ChartData = [
     {data: [],
-      // TODO:
      backgroundColor: [ '#2D3A85', '#213DDB', '#3E51A8', '#7A85B7' ]},
   ];
 
 
 
   constructor(
-    private  reasonsService: ReasonsService,
+    private  statisticsService: StatisticsService,
   ) {}
 
 
   ngOnInit() {
-    this.reasonsService.init();
-    this.reasonsService.decreasingBubbleSort(this.reasonsService.Amounts, this.reasonsService.Reasons);
-    this.ChartLabels = this.reasonsService.getReasons();
-    this.ChartData[0].data = this.reasonsService.getAmounts();
+    this.statisticsService.setReasons();
+    this.statisticsService.decreasingBubbleSort(this.statisticsService.Amounts, this.statisticsService.Reasons);
+    this.ChartLabels = this.statisticsService.Reasons;
+    this.ChartData[0].data = this.statisticsService.Amounts;
     }
 }

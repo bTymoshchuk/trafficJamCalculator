@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GlobalService} from '../../global.service';
 import {AddjamComponent} from '../addjam/addjam.component';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-statistics',
@@ -15,6 +15,7 @@ export class StatisticsComponent implements OnInit {
   constructor(public globalService: GlobalService,
               public addjam: MatDialog) { }
 
+  // Checks for existing jams
   public checkForJams(): void {
     if (this.globalService.JAMS.length === 0) {
       this.existingJams =   false;
@@ -23,7 +24,8 @@ export class StatisticsComponent implements OnInit {
     }
   }
 
-  public newJam() {          // new jam window
+  // New jam window
+  public newJam() {
 
     const dialogRef = this.addjam.open(AddjamComponent, {
       width: '250px'
