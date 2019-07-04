@@ -54,6 +54,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import {FacebookModule, FacebookService} from 'ngx-facebook';
 import { EditJamComponent } from './components/edit-jam/edit-jam.component';
 import {StatisticsService} from './statistics.service';
+import { CsvComponent } from './components/csv/csv.component';
 
 
 
@@ -85,6 +86,7 @@ import {StatisticsService} from './statistics.service';
     RefreshComponent,
     LoadingComponent,
     EditJamComponent,
+    CsvComponent,
 
 
 

@@ -27,8 +27,8 @@ export class GlobalService {
   constructor(private http: HttpClient,
               private router: Router,
               ) {
-    // The lastJam.duration should be equal to 1 on start
-    this.lastJam = {id: null, reason: '', begin: null, duration: 1};
+    // The lastJam should be empty on start
+    this.lastJam = {id: null, reason: '', begin: null, duration: null};
     this.jamsUrl = 'http://localhost:8080/jams/all';
     this.createUrl = 'http://localhost:8080/jams/create';
     this.deleteUrl = 'http://localhost:8080/jams/delete/';
@@ -46,8 +46,8 @@ export class GlobalService {
   public setJams(obs: Observable<Jam[]>): void {
     // Remembers current router url
     this.loadingUrl = this.router.url;
-    // Sets lastJam.duration to 1
-    this.lastJam = {id: null, reason: '', begin: null, duration: 1};
+    // Sets empty lastJam
+    this.lastJam = {id: null, reason: '', begin: null, duration: null};
     // Navigates to LoadingComponent
     this.router.navigate(['/loading']);
     obs.subscribe(data => {

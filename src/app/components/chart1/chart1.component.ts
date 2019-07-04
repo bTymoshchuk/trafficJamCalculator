@@ -7,7 +7,7 @@ import {StatisticsService} from '../../statistics.service';
   styleUrls: ['./chart1.component.css']
 })
 
-// the chart of reasons
+// Chart of reasons
 export class Chart1Component implements OnInit {
   public ChartOptions = {
     scaleShowVerticalLines: false,
