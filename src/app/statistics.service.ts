@@ -9,7 +9,7 @@ export class StatisticsService {
   Amounts: number[] = [];
   s = '';
   currentDayTime: number;
-
+  // Used to sort Amounts[] and Reasons[] arrays for using in Chart1Component
   public decreasingBubbleSort( a: number[] , b: string[] ): void {
     let n: number;
     let s: string;
@@ -27,7 +27,7 @@ export class StatisticsService {
     }
   }
 
-  // fills Reasons and Amounts arrays for Chart1Component
+  // Fills Reasons and Amounts arrays for Chart1Component
   public setReasons(): void {
     this.Amounts = [];
     this.Reasons = [];
@@ -41,7 +41,7 @@ export class StatisticsService {
     }
   }
 
-  // returns total duration of all jams in milliseconds
+  // Returns total duration of all jams in milliseconds
   public getTotalDuration(): number {
     let  j = 0;
     for (const jam of this.globalService.JAMS) {
@@ -51,32 +51,32 @@ export class StatisticsService {
 
   }
 
-  // returns current working day time
+  // Returns current working day time
   public getCurrentDayTime(): number {
     this.currentDayTime = this.getTotalDuration() % 28000000;
     return this.currentDayTime;
   }
 
-  // returns spinner value(% of current working day spent in jams)
+  // Returns spinner value(% of current working day spent in jams)
   public getSpinnerValue(): number {
     return ( this.getCurrentDayTime() / 28000000 * 100);
   }
 
-  // returns an amount of working days spent in jams
+  // Returns an amount of working days spent in jams
   public getWorkingDays(): number {
     return ( this.getTotalDuration() / 28800000 >> 0);
   }
 
-  // returns average duration
-  getAverageDuration(): number {
+  // Returns average duration
+  public getAverageDuration(): number {
     return this.getTotalDuration() / this.globalService.JAMS.length;
   }
 
-  // returns the name(s) of the most common reason(s)
-  getMostCommonReasons(): string {
+  // Returns the most common reason(s)
+  public getMostCommonReasons(): string {
     let maxAmount = 0;
     let mostCommonReason = '';
-    for (let i = 0; i < this.Amounts.length - 1; i++) {
+    for (let i = 0; i < this.Amounts.length; i++) {
       if ( this.Amounts[i] > maxAmount) {
         mostCommonReason = this.Reasons[i];
         maxAmount = this.Amounts[i];

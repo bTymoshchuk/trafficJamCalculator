@@ -3,9 +3,12 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Jam } from 'src/app/jam';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Router} from '@angular/router';
 import {JAMS} from './jams-list';
+import {StatisticsService} from './statistics.service';
+import {MatDialog} from '@angular/material';
+import {FacebookShareDialogComponent} from './components/facebook-share-dialog/facebook-share-dialog.component';
 
 
 
@@ -21,18 +24,23 @@ export class GlobalService {
   public createUrl: string; //
   public deleteUrl: string; //
   public updateUrl: string; //
+  public APIurl: string;     //
   public loadingUrl = '/loading'; // Used for LoadingComponent
   public gotResponse = false;     //
+  public previousFullDays: number;        // Used for checkWorkingDays()
+  public prevFullDaysInitialised = false;
 
   constructor(private http: HttpClient,
               private router: Router,
+              private dialog: MatDialog,
               ) {
     // The lastJam should be empty on start
     this.lastJam = {id: null, reason: '', begin: null, duration: null};
-    this.jamsUrl = 'http://localhost:8080/jams/all';
-    this.createUrl = 'http://localhost:8080/jams/create';
-    this.deleteUrl = 'http://localhost:8080/jams/delete/';
-    this.updateUrl = 'http://localhost:8080/jams/update';
+    this.APIurl = 'http://localhost:8080/jams/';
+    this.jamsUrl = this.APIurl + 'all';
+    this.createUrl = this.APIurl + 'create';
+    this.deleteUrl = this.APIurl + 'delete/';
+    this.updateUrl = this.APIurl + 'update';
     this.setJams(this.getAllJams());
 
   }
@@ -57,6 +65,8 @@ export class GlobalService {
       if (data.length > 0) {
         // Sets lastJam from the observable
         this.lastJam = data[0];
+        // Checks for working days
+        this.checkWorkingDays();
       }
       // Sets gotResponse to 'true', so LoadingComponent navigates back
       this.gotResponse = true; } );
@@ -99,6 +109,32 @@ export class GlobalService {
     this.router.navigateByUrl('/refresh', {skipLocationChange: true}).then(() =>
       // And back to the previous url
       this.router.navigate([url]));
+  }
+
+  // Returns the amount of working days lost in jams
+  public getWorkingDays(): number {
+    let totalTime = 0;
+    for ( const jam of this.JAMS) {
+      totalTime += jam.duration;
+      return totalTime / 28800000 >> 0;
+
+    }
+  }
+
+  // Checks whether the amount of working days has increased
+  public checkWorkingDays(): void {
+    if (!this.prevFullDaysInitialised) {
+      this.prevFullDaysInitialised = true;
+      this.previousFullDays = this.getWorkingDays();
+    } else {
+      if ( this.previousFullDays < this.getWorkingDays()) {
+        this.previousFullDays = this.getWorkingDays();
+        // TODO: call facebook post method
+        const dialogRef = this.dialog.open(FacebookShareDialogComponent, {
+          width : '250px',
+        });
+      }
+    }
   }
 
 }

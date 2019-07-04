@@ -55,6 +55,7 @@ import {FacebookModule, FacebookService} from 'ngx-facebook';
 import { EditJamComponent } from './components/edit-jam/edit-jam.component';
 import {StatisticsService} from './statistics.service';
 import { CsvComponent } from './components/csv/csv.component';
+import { FacebookShareDialogComponent } from './components/facebook-share-dialog/facebook-share-dialog.component';
 
 
 
@@ -87,6 +88,7 @@ import { CsvComponent } from './components/csv/csv.component';
     LoadingComponent,
     EditJamComponent,
     CsvComponent,
+    FacebookShareDialogComponent,
 
 
 
@@ -125,6 +127,6 @@ import { CsvComponent } from './components/csv/csv.component';
   ],
   providers: [ GlobalService, MatDatepickerModule, StatisticsService, AppLoadService , FacebookService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent, AddjamComponent, EditJamComponent]
+  entryComponents: [DialogComponent, AddjamComponent, EditJamComponent, FacebookShareDialogComponent]
 })
 export class AppModule { }

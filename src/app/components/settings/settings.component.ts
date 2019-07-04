@@ -16,8 +16,7 @@ export class SettingsComponent implements OnInit {
    public fbPost( body: string) {
       this.fb.api('/me/feed',
        'post',
-       {message: body,
-       access_token: this.token()})
+       {message: body})
        .then((res) => console.log(res))
        .catch((e) => console.log(e));
    }
