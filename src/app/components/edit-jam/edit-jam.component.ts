@@ -25,7 +25,6 @@ export class EditJamComponent implements OnInit {
   // Closes the dialog window
   public closeDialog(): void {
     this.dialogRef.close();
-    this.globalService.refresh();
   }
 
   // Submit button
@@ -37,8 +36,10 @@ export class EditJamComponent implements OnInit {
     this.globalService.newJam.begin = this.startDate.getTime();
     this.globalService.newJam.duration = parseInt(this.durationHours, 10) * 3600000 + parseInt(this.durationMinutes, 10) * 60000;
     this.dialogRef.close();
-    // Saves changes and gets a new JAMS array on GlobalService
-    this.globalService.setJams(this.globalService.updateJam(this.globalService.newJam));
+    this.dialogRef.afterClosed().subscribe(() => {
+      // Saves changes and gets a new JAMS array on GlobalService
+      this.globalService.setJams(this.globalService.updateJam(this.globalService.newJam));
+    });
   }
 
   ngOnInit() { }

@@ -14,6 +14,8 @@ export class SettingsComponent implements OnInit {
                private fb: FacebookService) { }
   // TEMP
    public fbPost( body: string) {
+      this.fb.getLoginStatus().then(console.log.bind(console))
+        .catch(console.error.bind(console));
       this.fb.api('/me/feed',
        'post',
        {message: body})

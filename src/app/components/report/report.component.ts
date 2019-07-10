@@ -27,7 +27,7 @@ export class ReportComponent implements OnInit {
     }
     const doc = new jsPDF();
     doc.autoTable({head, body, theme: 'plain'}, );
-    doc.save('table.pdf');
+    doc.save(this.datePipe.transform(new Date(), 'dd-MM-yyyy') + ' tJC report.pdf');
   }
 
 }

@@ -1,14 +1,14 @@
-// Handles http requests, JAMS array and refresh() function
+// Handles http requests, JAMS array and refresh function
 
 import {Injectable} from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Jam } from 'src/app/jam';
-import {Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import {JAMS} from './jams-list';
-import {StatisticsService} from './statistics.service';
 import {MatDialog} from '@angular/material';
 import {FacebookShareDialogComponent} from './components/facebook-share-dialog/facebook-share-dialog.component';
+
 
 
 
@@ -18,17 +18,17 @@ import {FacebookShareDialogComponent} from './components/facebook-share-dialog/f
 })
 export class GlobalService {
   public JAMS: Jam[];
-  public lastJam = new Jam();
+  public lastJam = new Jam();  // The last created jam
   public newJam = new Jam();   // Used for creating or updating jams
   public jamsUrl: string;   // http urls
   public createUrl: string; //
   public deleteUrl: string; //
   public updateUrl: string; //
-  public APIurl: string;     //
+  public APIurl: string;    //
   public loadingUrl = '/loading'; // Used for LoadingComponent
   public gotResponse = false;     //
   public previousFullDays: number;        // Used for checkWorkingDays()
-  public prevFullDaysInitialised = false;
+  public prevFullDaysInitialised = false; //
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -69,8 +69,8 @@ export class GlobalService {
         this.checkWorkingDays();
       }
       // Sets gotResponse to 'true', so LoadingComponent navigates back
-      this.gotResponse = true; } );
-
+      this.gotResponse = true;
+       });
   }
 
   // Creates a new jam
@@ -116,24 +116,24 @@ export class GlobalService {
     let totalTime = 0;
     for ( const jam of this.JAMS) {
       totalTime += jam.duration;
-      return totalTime / 28800000 >> 0;
-
     }
+    return Math.floor(totalTime / 28800000);
   }
 
   // Checks whether the amount of working days has increased
   public checkWorkingDays(): void {
-    if (!this.prevFullDaysInitialised) {
-      this.prevFullDaysInitialised = true;
-      this.previousFullDays = this.getWorkingDays();
-    } else {
-      if ( this.previousFullDays < this.getWorkingDays()) {
+    // If there is an amount of working days
+    if (this.prevFullDaysInitialised) {
+      if (this.previousFullDays < this.getWorkingDays()) {
         this.previousFullDays = this.getWorkingDays();
-        // TODO: call facebook post method
+        // Calls facebook share window
         const dialogRef = this.dialog.open(FacebookShareDialogComponent, {
-          width : '250px',
+          width: '250px',
         });
       }
+    } else {
+      this.prevFullDaysInitialised = true;
+      this.previousFullDays = this.getWorkingDays();
     }
   }
 

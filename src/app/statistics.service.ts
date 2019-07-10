@@ -1,3 +1,4 @@
+/* tslint:disable:prefer-for-of */
 import { Injectable } from '@angular/core';
 import {GlobalService} from './global.service';
 
@@ -9,6 +10,8 @@ export class StatisticsService {
   Amounts: number[] = [];
   s = '';
   currentDayTime: number;
+
+
   // Used to sort Amounts[] and Reasons[] arrays for using in Chart1Component
   public decreasingBubbleSort( a: number[] , b: string[] ): void {
     let n: number;
@@ -53,7 +56,7 @@ export class StatisticsService {
 
   // Returns current working day time
   public getCurrentDayTime(): number {
-    this.currentDayTime = this.getTotalDuration() % 28000000;
+    this.currentDayTime = this.getTotalDuration() % 28800000;
     return this.currentDayTime;
   }
 
@@ -64,7 +67,7 @@ export class StatisticsService {
 
   // Returns an amount of working days spent in jams
   public getWorkingDays(): number {
-    return ( this.getTotalDuration() / 28800000 >> 0);
+    return Math.floor( this.getTotalDuration() / 28800000);
   }
 
   // Returns average duration
@@ -90,6 +93,7 @@ export class StatisticsService {
     }
     return(mostCommonReason);
   }
+
 
 
   constructor(

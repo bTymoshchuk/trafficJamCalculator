@@ -5,5 +5,5 @@
   <h2 > {{duration | date:'HH:mm:ss' : '+0000'}}</h2>
 </div>
 <br>
-  <button mat-flat-button color="primary" >Post to FB</button>
+  <button mat-flat-button color="primary" (click)="fbShare();closeDialog()" >Post to FB</button>
   <button mat-button (click)="closeDialog()" >No, thanks!</button>

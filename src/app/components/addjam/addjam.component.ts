@@ -23,7 +23,6 @@ export class AddjamComponent implements OnInit {
   // Closes the window
   public closeDialog(): void {
     this.dialogRef.close();
-    this.globalService.refresh();
     }
 
   public createNewJam() {
@@ -35,10 +34,13 @@ export class AddjamComponent implements OnInit {
     this.startDate.setHours(parseInt(this.startHours, 10));
     this.globalService.newJam.begin = this.startDate.getTime();
     this.globalService.newJam.duration = parseInt(this.durationHours, 10) * 3600000 + parseInt(this.durationMinutes, 10) * 60000;
-    // Creates a new jam and gets a new JAMS array on GlobalService
-    this.globalService.setJams(this.globalService.createJam(this.globalService.newJam));
     this.closeDialog();
+    this.dialogRef.afterClosed().subscribe(() => {
+      // Creates a new jam and gets a new JAMS array on GlobalService
+      this.globalService.setJams(this.globalService.createJam(this.globalService.newJam));
+    });
   }
+
 
   ngOnInit() {}
 
