@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   // Checks for running jams
   public getJamCondition(): void {
       // Only the last jam can be running
-      // Jam is running, when jam.duration === 0
+      // Jam is running when jam.duration === 0
       // If the lastJam is running
       if (this.globalService.lastJam.duration === 0) {
         // Sets last Jam's start time

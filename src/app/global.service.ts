@@ -24,11 +24,11 @@ export class GlobalService {
   public createUrl: string; //
   public deleteUrl: string; //
   public updateUrl: string; //
-  public APIurl: string;    //
+  public  APIUrl: string;    //
   public loadingUrl = '/loading'; // Used for LoadingComponent
-  public gotResponse = false;     //
+  public gotResponse = false;     ///
   public previousFullDays: number;        // Used for checkWorkingDays()
-  public prevFullDaysInitialised = false; //
+  public prevFullDaysInitialised = false; ///
 
   constructor(private http: HttpClient,
               private router: Router,
@@ -36,11 +36,11 @@ export class GlobalService {
               ) {
     // The lastJam should be empty on start
     this.lastJam = {id: null, reason: '', begin: null, duration: null};
-    this.APIurl = 'http://localhost:8080/jams/';
-    this.jamsUrl = this.APIurl + 'all';
-    this.createUrl = this.APIurl + 'create';
-    this.deleteUrl = this.APIurl + 'delete/';
-    this.updateUrl = this.APIurl + 'update';
+    this. APIUrl = 'http://localhost:8080/jams/';
+    this.jamsUrl = this. APIUrl + 'all';
+    this.createUrl = this. APIUrl + 'create';
+    this.deleteUrl = this. APIUrl + 'delete/';
+    this.updateUrl = this. APIUrl + 'update';
     this.setJams(this.getAllJams());
 
   }
@@ -61,7 +61,6 @@ export class GlobalService {
     obs.subscribe(data => {
       // Sets JAMS from the observable
       this.JAMS = data;
-      console.log(data);
       if (data.length > 0) {
         // Sets lastJam from the observable
         this.lastJam = data[0];

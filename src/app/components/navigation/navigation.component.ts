@@ -17,14 +17,13 @@ export class NavigationComponent implements OnInit {
     const loginOptions: LoginOptions = {
       enable_profile_selector: true,
       return_scopes: true,
-      scope: 'manage_pages, publish_pages'
     };
 
     this.fb.login(loginOptions)
       .then((res: LoginResponse) => {
       console.log('Logged in', res);
     })
-      .catch((e) => {console.log(e);});
+      .catch((e) => {console.log(e); });
   }
 
 
