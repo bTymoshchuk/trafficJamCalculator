@@ -12,6 +12,14 @@
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.3&appId=447862259104872&autoLogAppEvents=1"></script>
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script type="text/javascript">
+    var cfgApiBaseUrl = "http://localhost:8080/";
+    /*
+    IDE: http://localhost:8080/"
+    Tomcat: http://localhost:8080/tjcapi/
+    */
+    window.cfgApiBaseUrl = cfgApiBaseUrl;
+  </script>
 </head>
 <body>
   <app-root></app-root>

@@ -3,15 +3,16 @@
   background-color: #FFFFFF;
 
 }
+
+.flatButton{
+  margin-bottom: 3px;
+  margin-left:10px;
+}
 table {
   width: 100%;
 }
 th.mat-sort-header-sorted {
   color: black;
-}
-
-
-.report{
 }
 
 .expandedDetail  td{
@@ -34,3 +35,5 @@ tr.jamRow:not(.selected):active {
 .deleteButton{
   align-self: flex-end;
 }
+
+

@@ -28,20 +28,20 @@
 
         <div *ngIf="jamSelected" >
 
-          <button class="editButton"
-                  mat-flat-button
+          <button class="iconButton"
+                  mat-icon-button
                   type="button"
                   name="button"
                   (click)="editJam(selectedJam.id)">
-            <mat-icon style='color:black;' >edit</mat-icon>
+            <mat-icon style='color:black' >edit</mat-icon>
           </button>
 
           <button class="deleteButton"
-                  mat-flat-button
+                  mat-icon-button
                   type="button"
                   name="button"
                   (click)="removeJam()">
-            <mat-icon style='color:black;' >delete</mat-icon>
+            <mat-icon style='color:black' >delete</mat-icon>
           </button>
 
         </div>
@@ -68,15 +68,16 @@
 
   <mat-paginator class="paginator" pageSize="15" ></mat-paginator>
 
-  <div class="report">
+  <div>
     <button mat-flat-button
             type="button"
             name="button"
+            class="flatButton"
             (click)="newJam()"
             style="color: grey;"
     >+ New jam</button>
-    <app-report></app-report>
-    <app-csv></app-csv>
+    <app-report class="flatButton"></app-report>
+    <app-csv class="flatButton"></app-csv>
   </div>
 
 </mat-card>

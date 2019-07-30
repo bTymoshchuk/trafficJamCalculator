@@ -36,7 +36,7 @@ export class GlobalService {
               ) {
     // The lastJam should be empty on start
     this.lastJam = {id: null, reason: '', begin: null, duration: null};
-    this. APIUrl = 'http://localhost:8080/jams/';
+    this. APIUrl = window['cfgApiBaseUrl'] + 'jams/';
     this.jamsUrl = this. APIUrl + 'all';
     this.createUrl = this. APIUrl + 'create';
     this.deleteUrl = this. APIUrl + 'delete/';

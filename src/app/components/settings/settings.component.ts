@@ -9,7 +9,7 @@ import {GlobalService} from '../../global.service';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor( private globalService: GlobalService) { }
+  constructor( public globalService: GlobalService) { }
 
 
   ngOnInit() {}
