@@ -10,7 +10,7 @@ import {GlobalService} from '../../global.service';
 export class AddjamComponent implements OnInit {
   public maxDate = new Date();    // Maximal start date limit on the datepicker
   public reason = 'Unknown';
-  public startDate = new Date(this.maxDate.getFullYear(), this.maxDate.getMonth(), this.maxDate.getDay(), 0);
+  public startDate = new Date(this.maxDate.getFullYear(), this.maxDate.getMonth(), this.maxDate.getDate(), 0);
   public startMinutes = '00';
   public startHours = '00';
   public durationHours = '00';

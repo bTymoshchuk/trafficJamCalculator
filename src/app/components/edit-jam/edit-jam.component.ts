@@ -12,7 +12,7 @@ export class EditJamComponent implements OnInit {
   // Maximal start date on the datepicker
   public maxDate = new Date();
   public reason = 'Unknown';
-  public startDate = new Date(this.maxDate.getFullYear(), this.maxDate.getMonth(), this.maxDate.getDay(), 0);
+  public startDate = new Date(this.maxDate.getFullYear(), this.maxDate.getMonth(), this.maxDate.getDate(), 0);
   public startMinutes = '00';
   public startHours = '00';
   public durationHours = '00';

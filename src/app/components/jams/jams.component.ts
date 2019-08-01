@@ -71,7 +71,6 @@ export class JamsComponent implements OnInit {
   // Delete button
   public removeJam(): void {
     this.globalService.setJams(this.globalService.delete(this.selectedJam.id));
-    console.log('-Deleted jam Id:' + this.selectedJam.id);
   }
 
 ngOnInit() {

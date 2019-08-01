@@ -15,7 +15,10 @@
 
   <ng-container matColumnDef="duration">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration</th>
-    <td mat-cell *matCellDef="let jam"> {{jam.duration | date:'H:mm:ss' : '+0000'}}</td>
+    <td mat-cell *matCellDef="let jam">
+      <div *ngIf="jam.duration === 0; else elseBlock" style="color: #5b5"> Running </div>
+      <ng-template #elseBlock>{{jam.duration | date:'H:mm:ss' : '+0000'}}</ng-template>
+    </td>
   </ng-container>
 
   <!--expandable row-->
