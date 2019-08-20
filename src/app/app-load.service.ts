@@ -6,6 +6,12 @@ import {FacebookService, InitParams} from 'ngx-facebook';
   providedIn: 'root'
 })
 export class AppLoadService {
+  initParams: InitParams = {
+    appId      : '447862259104872',
+    cookie     : true,
+    xfbml      : true,
+    version    : 'v3.3'
+  };
 
     constructor(
       private globalService: GlobalService,
@@ -13,12 +19,6 @@ export class AppLoadService {
     ) { }
   public initializeApp(): void {
       this.globalService.setJams(this.globalService.getAllJams());
-      const initParams: InitParams = {
-        appId      : '447862259104872',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v3.3'
-      };
-      this.fb.init(initParams);
+      this.fb.init(this.initParams);
     }
 }

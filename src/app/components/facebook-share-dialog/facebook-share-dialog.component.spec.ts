@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FacebookShareDialogComponent } from './facebook-share-dialog.component';
+import {MatDialogRef} from '@angular/material';
+import {FacebookService} from 'ngx-facebook';
 
 describe('FacebookShareDialogComponent', () => {
   let component: FacebookShareDialogComponent;
@@ -8,7 +10,8 @@ describe('FacebookShareDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FacebookShareDialogComponent ]
+      declarations: [ FacebookShareDialogComponent ],
+      providers: [ { provide: MatDialogRef, useValue: {}}, FacebookService]
     })
     .compileComponents();
   }));

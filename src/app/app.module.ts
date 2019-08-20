@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -127,6 +127,7 @@ import { FacebookShareDialogComponent } from './components/facebook-share-dialog
   ],
   providers: [ GlobalService, MatDatepickerModule, StatisticsService, AppLoadService , FacebookService],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent, AddjamComponent, EditJamComponent, FacebookShareDialogComponent]
+  entryComponents: [DialogComponent, AddjamComponent, EditJamComponent, FacebookShareDialogComponent],
+  schemas: []
 })
 export class AppModule { }

@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Chart1Component } from './chart1.component';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {GlobalService} from '../../global.service';
+import {RouterTestingModule} from '@angular/router/testing';
+import {HttpClientModule} from '@angular/common/http';
+import {MatDialogModule, MatDialogRef} from '@angular/material';
+import {Jam} from '../../jam';
 
 describe('Chart1Component', () => {
   let component: Chart1Component;
@@ -8,7 +14,9 @@ describe('Chart1Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Chart1Component ]
+      declarations: [ Chart1Component ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [{provide: GlobalService, useClass: MockGlobalService}],
     })
     .compileComponents();
   }));
@@ -22,4 +30,8 @@ describe('Chart1Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService {
+    public JAMS: Jam[] = [];
+  }
 });

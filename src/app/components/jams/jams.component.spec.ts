@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JamsComponent } from './jams.component';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core';
+import {GlobalService} from '../../global.service';
+import {Jam} from '../../jam';
+import {MatDialogModule, MatPaginatorModule, MatTableDataSource, MatTableModule} from '@angular/material';
 
 describe('JamsComponent', () => {
   let component: JamsComponent;
@@ -8,7 +12,10 @@ describe('JamsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JamsComponent ]
+      declarations: [ JamsComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
+      providers: [ {provide: GlobalService, useClass: MockGlobalService}],
+      imports: [MatTableModule, MatPaginatorModule, MatDialogModule],
     })
     .compileComponents();
   }));
@@ -22,4 +29,8 @@ describe('JamsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService{
+    public JAMS: Jam[] = [];
+  }
 });

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ReportComponent } from './report.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {GlobalService} from '../../global.service';
+import {Jam} from '../../jam';
 
 describe('ReportComponent', () => {
   let component: ReportComponent;
@@ -8,7 +11,9 @@ describe('ReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReportComponent ]
+      declarations: [ ReportComponent ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [{provide: GlobalService, useClass: MockGlobalService}]
     })
     .compileComponents();
   }));
@@ -22,4 +27,8 @@ describe('ReportComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService {
+    public JAMS: Jam[] = [];
+  }
 });

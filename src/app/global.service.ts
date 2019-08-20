@@ -17,7 +17,7 @@ import {FacebookShareDialogComponent} from './components/facebook-share-dialog/f
   providedIn: 'root'
 })
 export class GlobalService {
-  public JAMS: Jam[];
+  public JAMS: Jam[] = [];          // Contains all jams
   public lastJam = new Jam();  // The last created jam
   public newJam = new Jam();   // Used for creating or updating jams
   public jamsUrl: string;   // http urls
@@ -36,7 +36,7 @@ export class GlobalService {
               ) {
     // The lastJam should be empty on start
     this.lastJam = {id: null, reason: '', begin: null, duration: null};
-    this. APIUrl = window['cfgApiBaseUrl'] + 'jams/';
+    this.APIUrl = window['cfgApiBaseUrl'] + 'jams/';
     this.jamsUrl = this. APIUrl + 'all';
     this.createUrl = this. APIUrl + 'create';
     this.deleteUrl = this. APIUrl + 'delete/';
@@ -100,7 +100,7 @@ export class GlobalService {
    return  this.http.put<Jam[]>(this.updateUrl, jam);
   }
 
-  // Refreshes current router page
+  // Refreshes current router navigation path without refreshing the full page
   public refresh(): void {
     // Remembers current router url
     const url = this.router.url;
@@ -110,7 +110,7 @@ export class GlobalService {
       this.router.navigate([url]));
   }
 
-  // Returns the amount of working days lost in jams
+  // Returns the amount of full working days lost in jams(copied from StatisticsService to avoid a circular dependency)
   public getWorkingDays(): number {
     let totalTime = 0;
     for ( const jam of this.JAMS) {

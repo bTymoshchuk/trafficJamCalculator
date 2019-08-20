@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { StatscardComponent } from './statscard.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {Jam} from '../../jam';
 
 describe('StatscardComponent', () => {
   let component: StatscardComponent;
@@ -8,7 +10,9 @@ describe('StatscardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StatscardComponent ]
+      declarations: [ StatscardComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA],
+
     })
     .compileComponents();
   }));
@@ -22,4 +26,8 @@ describe('StatscardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService {
+    public JAMS: Jam[] = []
+  }
 });

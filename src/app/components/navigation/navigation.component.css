@@ -3,7 +3,7 @@
    z-index: 2;
 }
 .link{
-  font-size: 1.33em;
+  font-size: 1.33em !important;
 
 }
 mat-toolbar-row{

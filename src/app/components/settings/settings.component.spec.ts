@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SettingsComponent } from './settings.component';
+import {Jam} from '../../jam';
+import {GlobalService} from '../../global.service';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -8,7 +10,8 @@ describe('SettingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
+      declarations: [ SettingsComponent ],
+      providers: [ { provide: GlobalService, useClass: MockGlobalService}]
     })
     .compileComponents();
   }));
@@ -22,4 +25,8 @@ describe('SettingsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService{
+    public JAMS: Jam[] = [];
+  }
 });
