@@ -6,10 +6,10 @@ import {GlobalService} from './global.service';
   providedIn: 'root'
 })
 export class StatisticsService {
-  Reasons: string[] = [];
-  Amounts: number[] = [];
-  s = '';
-  currentDayTime: number;
+  public Reasons: string[] = [];
+  public Amounts: number[] = [];
+  public s = '';
+  public currentDayTime: number;
 
 
   // Used to sort Amounts[] and Reasons[] arrays for using in Chart1Component

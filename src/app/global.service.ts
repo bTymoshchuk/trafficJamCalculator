@@ -41,6 +41,7 @@ export class GlobalService {
     this.createUrl = this. APIUrl + 'create';
     this.deleteUrl = this. APIUrl + 'delete/';
     this.updateUrl = this. APIUrl + 'update';
+    // Initialisation request
     this.setJams(this.getAllJams());
 
   }

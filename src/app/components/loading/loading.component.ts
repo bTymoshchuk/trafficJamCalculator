@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {GlobalService} from '../../global.service';
 import {Router} from '@angular/router';
 
@@ -37,7 +37,7 @@ export class LoadingComponent implements OnInit {
   } else {
       this.globalService.gotResponse = false;
       this.globalService.loadingUrl = '/loading';
-      this.router.navigate(['/main']);
+      this.router.navigate(['/main']) ;
     }
   }
 

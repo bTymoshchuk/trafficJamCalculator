@@ -27,7 +27,7 @@ describe('AppLoadService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have correct initParams', ()=>{
+  it('should have correct facebook initialisation params', ()=>{
     expect(service.initParams.appId).toBe('447862259104872');
     expect(service.initParams.cookie).toBeTruthy();
     expect(service.initParams.xfbml).toBeTruthy();

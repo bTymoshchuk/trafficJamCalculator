@@ -56,7 +56,7 @@ import { EditJamComponent } from './components/edit-jam/edit-jam.component';
 import {StatisticsService} from './statistics.service';
 import { CsvComponent } from './components/csv/csv.component';
 import { FacebookShareDialogComponent } from './components/facebook-share-dialog/facebook-share-dialog.component';
-
+import { Location} from '@angular/common';
 
 
 @NgModule({
@@ -125,7 +125,7 @@ import { FacebookShareDialogComponent } from './components/facebook-share-dialog
 
 
   ],
-  providers: [ GlobalService, MatDatepickerModule, StatisticsService, AppLoadService , FacebookService],
+  providers: [ GlobalService, MatDatepickerModule, StatisticsService, AppLoadService , FacebookService, Location],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent, AddjamComponent, EditJamComponent, FacebookShareDialogComponent],
   schemas: []
