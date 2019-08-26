@@ -1,6 +1,6 @@
-import {async, ComponentFixture, TestBed, tick} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import { NavigationComponent } from './navigation.component';
-import {CUSTOM_ELEMENTS_SCHEMA, DebugElement} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {FacebookService} from 'ngx-facebook';
 import {RouterTestingModule} from '@angular/router/testing';
 import {Router} from '@angular/router';

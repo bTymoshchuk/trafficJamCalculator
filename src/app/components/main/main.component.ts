@@ -27,7 +27,7 @@ export class MainComponent implements OnInit {
         this.startDate.setTime(this.globalService.lastJam.begin);
         // And reason
         this.selectedReason = this.globalService.lastJam.reason;
-        // Starts the timer
+        // Starts the timer with the last jam duration
         this.timer = new Date();
         this.timer.setTime(this.timer.getTime() - this.startDate.getTime());
         setInterval(() => {         // timer
@@ -96,7 +96,7 @@ export class MainComponent implements OnInit {
 }
 
   constructor(
-    private globalService: GlobalService,
+    public globalService: GlobalService,
     private dialog: MatDialog,
   ) { }
 

@@ -7,6 +7,7 @@ import {MatFormFieldModule} from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {GlobalService} from '../../global.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {Jam} from '../../jam';
 
 describe('EditJamComponent', () => {
   let component: EditJamComponent;
@@ -17,7 +18,7 @@ describe('EditJamComponent', () => {
       declarations: [ EditJamComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [MatDatepickerModule, MatFormFieldModule, FormsModule, MatNativeDateModule, MatInputModule, MatSelectModule, BrowserAnimationsModule],
-      providers: [{provide: GlobalService, useValue: {}},{provide: MatDialogRef, useValue: {}}]
+      providers: [{provide: GlobalService, useClass: MockGlobalService}, {provide: MatDialogRef, useValue: {}}]
     })
     .compileComponents();
   }));
@@ -31,4 +32,9 @@ describe('EditJamComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService {
+    JAMS: Jam[] = [];
+    newJam: Jam = {id: null, reason: 'Unknown', begin: 0, duration: 0};
+  }
 });

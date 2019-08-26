@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {RouterTestingModule} from '@angular/router/testing';
 import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material';
+import {Jam} from '../../jam';
 
 describe('StatisticsComponent', () => {
   let component: StatisticsComponent;
@@ -21,8 +22,8 @@ describe('StatisticsComponent', () => {
         MockSpinnerComponent,
         MockStatscard2Component,
         MockStatscardComponent ],
-      providers: [ {provide: MatDialogRef, useValue: {}}, GlobalService],
-      imports: [ HttpClientModule, RouterTestingModule, MatDialogModule]
+      providers: [ {provide: GlobalService, useClass: MockGlobalService}, {provide: MatDialogRef , useValue: {}}],
+      imports: [ MatDialogModule]
     })
     .compileComponents();
   }));
@@ -67,5 +68,9 @@ describe('StatisticsComponent', () => {
     template: ''
   })
   class MockChartsCardComponent {
+  }
+
+  class MockGlobalService {
+    JAMS: Jam[] = [];
   }
 });

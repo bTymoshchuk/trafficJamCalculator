@@ -31,8 +31,8 @@ export class JamsComponent implements OnInit {
   public dataSource  = new MatTableDataSource<Jam>(this.JAMS_DATA);
 
   constructor(
-      private addjam: MatDialog,
-      private globalService: GlobalService,
+    private addjam: MatDialog,
+    public globalService: GlobalService,
   ) { }
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

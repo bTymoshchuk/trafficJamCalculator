@@ -1,4 +1,4 @@
-// An empty component used for refreshing
+// An empty component used for refreshing(GlobalService.refresh()) and testing
 import { Component, OnInit } from '@angular/core';
 
 @Component({

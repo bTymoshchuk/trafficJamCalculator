@@ -30,6 +30,17 @@ describe('MainComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should get condition of the last jam when over', () => {
+    component.getJamCondition();
+    expect(component.jamCondition).toBeTruthy();
+  });
+
+  it('should get condition of the last jam when running', () => {
+    component.globalService.lastJam.duration = 0;
+    component.getJamCondition();
+    expect(component.jamCondition).toBeFalsy();
+  });
+
   class MockGlobalService {
     public JAMS: Jam[] = [];
     public lastJam: Jam = {id: 1, reason: 'Unknown', begin: 0, duration: 123456};

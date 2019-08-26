@@ -16,6 +16,7 @@ import {RouterModule} from '@angular/router';
 import {GlobalService} from '../../global.service';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {Jam} from '../../jam';
 
 
 
@@ -35,7 +36,7 @@ describe('AddjamComponent', () => {
         MatNativeDateModule,
         MatInputModule,
         BrowserAnimationsModule],
-      providers: [GlobalService, {provide: MatDialogRef, useValue: {}}],
+      providers: [{provide: GlobalService, useClass: MockGlobalService}, {provide: MatDialogRef, useValue: {}}],
     })
     .compileComponents();
   }));
@@ -49,4 +50,9 @@ describe('AddjamComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  class MockGlobalService {
+    JAMS: Jam[] = [] ;
+    newJam: Jam = {id: null, reason: 'Unknown', begin: 0, duration: 0};
+  }
 });
