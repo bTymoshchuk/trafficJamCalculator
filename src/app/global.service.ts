@@ -17,7 +17,7 @@ import {FacebookShareDialogComponent} from './components/facebook-share-dialog/f
   providedIn: 'root'
 })
 export class GlobalService {
-  public JAMS: Jam[] = [];          // Contains all jams
+  public JAMS: Jam[] = [];     // Contains all jams
   public lastJam = new Jam();  // The last created jam
   public newJam = new Jam();   // Used for creating or updating jams
   public jamsUrl: string;   // http urls

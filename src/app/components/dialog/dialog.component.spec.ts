@@ -28,6 +28,11 @@ describe('DialogComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should render the duration of the last jam', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.innerHTML).toContain('0');
+  });
+
   class MockGlobalService {
     public newJam: Jam = {id: 0, reason: 'Unknown', begin: 0, duration: 0};
   }

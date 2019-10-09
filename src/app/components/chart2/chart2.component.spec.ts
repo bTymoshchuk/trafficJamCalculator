@@ -37,10 +37,10 @@ describe('Chart2Component', () => {
     expect(component).toBeTruthy();
   });
 
-  /*it('should return days', () => {
+  it('should return days', () => {
     component.getDays();
-    expect(component.amounts).toBe([ 1, 1, 1, 0, 4, 0, 0]);
-  });*/
+    expect(component.amounts.toString()).toBe([ 1, 1, 1, 0, 4, 0, 0].toString());
+  });
 
   class MockGlobalService {
     public JAMS: Jam[] = [];
